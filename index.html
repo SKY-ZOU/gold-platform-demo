@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大湾区跨境黄金保税加工智慧监管服务平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="platform.css">
+</head>
+<body>
+
+<!-- ==================== 角色选择入口 ==================== -->
+<div id="roleSelect" class="role-select-overlay">
+    <div class="role-select-content">
+        <div class="role-logo">
+            <svg viewBox="0 0 40 40" width="52" height="52">
+                <defs><linearGradient id="gd" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#FFD700"/>
+                </linearGradient></defs>
+                <polygon points="20,2 26,14 38,16 29,25 31,38 20,32 9,38 11,25 2,16 14,14" fill="url(#gd)" stroke="#B8860B" stroke-width="0.5"/>
+            </svg>
+        </div>
+        <h1>大湾区跨境黄金保税加工<br>智慧监管服务平台</h1>
+        <p class="role-subtitle">一平台 · 四中心 · 三节点 · 双端协同</p>
+        <div class="role-cards">
+            <div class="role-card" onclick="enterPlatform('business')">
+                <div class="rc-icon">🏢</div>
+                <h2>企业服务端</h2>
+                <p class="rc-label">To B · Business Portal</p>
+                <ul>
+                    <li>保税加工业务申请</li>
+                    <li>合同/手册备案管理</li>
+                    <li>加工进度跟踪</li>
+                    <li>通关申报与核销</li>
+                    <li>结算与金融服务</li>
+                </ul>
+                <div class="rc-users">适用：会员企业 · 加工厂 · 贸易商</div>
+                <button class="rc-btn business">进入企业端 →</button>
+            </div>
+            <div class="role-card" onclick="enterPlatform('gov')">
+                <div class="rc-icon">🏛️</div>
+                <h2>监管服务端</h2>
+                <p class="rc-label">To G · Government Portal</p>
+                <ul>
+                    <li>业务审批管理</li>
+                    <li>实时监管驾驶舱</li>
+                    <li>核销核查管理</li>
+                    <li>风控预警中心</li>
+                    <li>企业信用评级</li>
+                </ul>
+                <div class="rc-users">适用：海关 · 平台运营方 · 监管机构</div>
+                <button class="rc-btn gov">进入监管端 →</button>
+            </div>
+        </div>
+        <div class="role-footer">一带一路国际黄金集团 · Belt & Road International Gold Group Limited<br><span>DEMO v2.0 · 2026年4月</span></div>
+    </div>
+</div>
+
+<!-- ==================== 主平台框架 ==================== -->
+<div id="platform" class="platform hidden">
+    <!-- 顶栏 -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+            <svg viewBox="0 0 40 40" width="24" height="24"><polygon points="20,2 26,14 38,16 29,25 31,38 20,32 9,38 11,25 2,16 14,14" fill="url(#gd)" stroke="#B8860B" stroke-width="0.5"/></svg>
+            <span class="topbar-title">黄金保税监管平台</span>
+            <div class="topbar-portal" id="portalBadge"></div>
+        </div>
+        <div class="topbar-right">
+            <div class="topbar-gold-price"><span class="price-label">LBMA</span><span class="price-value">$2,347.80</span><span class="price-change up">+0.42%</span></div>
+            <button class="topbar-switch" onclick="showRoleSelect()">切换端口</button>
+            <div class="topbar-user"><div class="user-avatar" id="userAvatar">张</div><span id="userName">张德熙</span></div>
+        </div>
+    </header>
+
+    <!-- 侧边栏 -->
+    <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav" id="menuBusiness">
+            <div class="menu-group"><div class="menu-group-title">工作台</div>
+                <a class="menu-item active" data-page="b-dashboard" onclick="navigateTo(this)"><span class="mi-icon">📊</span>工作台首页</a></div>
+            <div class="menu-group"><div class="menu-group-title">业务办理</div>
+                <a class="menu-item" data-page="b-apply" onclick="navigateTo(this)"><span class="mi-icon">📝</span>保税加工申请<span class="mi-badge">新</span></a>
+                <a class="menu-item" data-page="b-contracts" onclick="navigateTo(this)"><span class="mi-icon">📋</span>合同/手册管理</a>
+                <a class="menu-item" data-page="b-processing" onclick="navigateTo(this)"><span class="mi-icon">🔥</span>加工进度跟踪</a>
+                <a class="menu-item" data-page="b-customs" onclick="navigateTo(this)"><span class="mi-icon">🛃</span>通关申报</a></div>
+            <div class="menu-group"><div class="menu-group-title">仓储物流</div>
+                <a class="menu-item" data-page="b-warehouse" onclick="navigateTo(this)"><span class="mi-icon">📦</span>保税仓管理</a>
+                <a class="menu-item" data-page="b-logistics" onclick="navigateTo(this)"><span class="mi-icon">🚛</span>物流追踪</a></div>
+            <div class="menu-group"><div class="menu-group-title">检测与结算</div>
+                <a class="menu-item" data-page="b-testing" onclick="navigateTo(this)"><span class="mi-icon">🔬</span>检测认证</a>
+                <a class="menu-item" data-page="b-settlement" onclick="navigateTo(this)"><span class="mi-icon">💰</span>结算中心</a></div>
+        </nav>
+        <nav class="sidebar-nav hidden" id="menuGov">
+            <div class="menu-group"><div class="menu-group-title">监管工作台</div>
+                <a class="menu-item active" data-page="g-dashboard" onclick="navigateTo(this)"><span class="mi-icon">📊</span>监管驾驶舱</a></div>
+            <div class="menu-group"><div class="menu-group-title">审批管理</div>
+                <a class="menu-item" data-page="g-approval" onclick="navigateTo(this)"><span class="mi-icon">✅</span>业务审批<span class="mi-badge warn">5</span></a>
+                <a class="menu-item" data-page="g-enterprise" onclick="navigateTo(this)"><span class="mi-icon">🏢</span>企业管理</a>
+                <a class="menu-item" data-page="g-whitelist" onclick="navigateTo(this)"><span class="mi-icon">📜</span>白名单资质</a></div>
+            <div class="menu-group"><div class="menu-group-title">监管核查</div>
+                <a class="menu-item" data-page="g-ledger" onclick="navigateTo(this)"><span class="mi-icon">📒</span>统一底账</a>
+                <a class="menu-item" data-page="g-verify" onclick="navigateTo(this)"><span class="mi-icon">🔍</span>核销核查</a>
+                <a class="menu-item" data-page="g-risk" onclick="navigateTo(this)"><span class="mi-icon">⚠️</span>风控预警<span class="mi-badge danger">3</span></a></div>
+            <div class="menu-group"><div class="menu-group-title">数据中心</div>
+                <a class="menu-item" data-page="g-stats" onclick="navigateTo(this)"><span class="mi-icon">📈</span>统计分析</a>
+                <a class="menu-item" data-page="g-exchange" onclick="navigateTo(this)"><span class="mi-icon">🔄</span>双关数据交换</a></div>
+        </nav>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content" id="mainContent">
+        <!-- To B: 工作台 -->
+        <div class="page active" id="page-b-dashboard">
+            <div class="page-header"><h2>工作台</h2><div class="breadcrumb">企业服务端 / 工作台首页</div></div>
+            <div class="todo-banner">
+                <div class="todo-item"><span class="todo-count">2</span>待审批合同</div>
+                <div class="todo-item"><span class="todo-count warn">1</span>加工异常</div>
+                <div class="todo-item"><span class="todo-count">3</span>待核销批次</div>
+                <div class="todo-item"><span class="todo-count info">2</span>报告待确认</div>
+            </div>
+            <div class="kpi-row">
+                <div class="kpi-card"><div class="kpi-val">12</div><div class="kpi-label">本月申请单</div><div class="kpi-sub up">↑ 3 vs上月</div></div>
+                <div class="kpi-card"><div class="kpi-val">856.5 <small>kg</small></div><div class="kpi-label">本月加工量</div><div class="kpi-sub up">↑ 12%</div></div>
+                <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">在途批次</div><div class="kpi-sub">追踪中</div></div>
+                <div class="kpi-card"><div class="kpi-val">99.2%</div><div class="kpi-label">合规率</div><div class="kpi-sub up">↑ 0.3%</div></div>
+            </div>
+            <div class="card"><div class="card-header"><h3>最近业务</h3><a class="link">查看全部 →</a></div>
+                <table class="data-table"><thead><tr><th>业务编号</th><th>类型</th><th>原料量</th><th>状态</th><th>提交日期</th><th>操作</th></tr></thead><tbody>
+                    <tr><td class="mono">GBP-2026-0092</td><td><span class="tag blue">来料</span></td><td>150.00 kg</td><td><span class="status processing">加工中</span></td><td>04-12</td><td><a class="link" onclick="navigateToPage('b-processing')">跟踪</a></td></tr>
+                    <tr><td class="mono">GBP-2026-0091</td><td><span class="tag purple">进料</span></td><td>200.00 kg</td><td><span class="status pending">待审批</span></td><td>04-11</td><td><a class="link">查看</a></td></tr>
+                    <tr><td class="mono">GBP-2026-0089</td><td><span class="tag blue">来料</span></td><td>125.50 kg</td><td><span class="status testing">检测中</span></td><td>04-09</td><td><a class="link">查看</a></td></tr>
+                    <tr><td class="mono">GBP-2026-0087</td><td><span class="tag blue">来料</span></td><td>180.00 kg</td><td><span class="status done">已完成</span></td><td>04-05</td><td><a class="link">查看</a></td></tr>
+                </tbody></table>
+            </div>
+        </div>
+
+        <!-- To B: 保税加工申请 -->
+        <div class="page" id="page-b-apply">
+            <div class="page-header"><h2>保税加工业务申请</h2><div class="breadcrumb">企业服务端 / 业务办理 / 保税加工申请</div></div>
+            <div class="steps-bar">
+                <div class="step-item active"><div class="step-dot">1</div><span>选择类型</span></div><div class="step-line done"></div>
+                <div class="step-item active"><div class="step-dot">2</div><span>填写信息</span></div><div class="step-line"></div>
+                <div class="step-item"><div class="step-dot">3</div><span>上传单证</span></div><div class="step-line"></div>
+                <div class="step-item"><div class="step-dot">4</div><span>提交审核</span></div>
+            </div>
+            <div class="form-card">
+                <div class="form-section"><h3>一、业务类型</h3>
+                    <div class="type-select">
+                        <label class="type-option selected"><input type="radio" name="bizType" checked><div class="type-box"><div class="type-icon">📥</div><div class="type-name">来料加工</div><div class="type-desc">境外委托，保税入境加工后复出口</div></div></label>
+                        <label class="type-option"><input type="radio" name="bizType"><div class="type-box"><div class="type-icon">📦</div><div class="type-name">进料加工</div><div class="type-desc">自主进口，加工后出口或内销</div></div></label>
+                    </div>
+                </div>
+                <div class="form-section"><h3>二、申请信息</h3>
+                    <div class="form-grid">
+                        <div class="form-group"><label>委托方 <span class="req">*</span></label><input type="text" value="Hong Kong Gold Trading Co."></div>
+                        <div class="form-group"><label>委托方所在地 <span class="req">*</span></label><select><option>中国香港</option><option>新加坡</option><option>迪拜</option></select></div>
+                        <div class="form-group"><label>原料类型 <span class="req">*</span></label><select><option>金条（粗金）</option><option>金粒</option><option>含金废料</option></select></div>
+                        <div class="form-group"><label>预估重量 (kg) <span class="req">*</span></label><input type="number" value="150.00"></div>
+                        <div class="form-group"><label>原料纯度</label><input type="text" value="95.5%"></div>
+                        <div class="form-group"><label>目标纯度 <span class="req">*</span></label><select><option>99.99% (四个九)</option><option>99.9%</option></select></div>
+                        <div class="form-group"><label>加工工厂 <span class="req">*</span></label><select><option>众恒隆·东莞精炼厂</option></select></div>
+                        <div class="form-group"><label>预计交货</label><input type="date" value="2026-05-15"></div>
+                        <div class="form-group full"><label>备注</label><textarea rows="2">成品需符合香港金标准，规格1kg/条</textarea></div>
+                    </div>
+                </div>
+                <div class="form-actions"><button class="btn secondary">保存草稿</button><button class="btn primary" onclick="submitApply()">下一步：上传单证 →</button></div>
+            </div>
+        </div>
+
+        <!-- To B: 合同管理 -->
+        <div class="page" id="page-b-contracts">
+            <div class="page-header"><h2>合同/手册管理</h2><div class="breadcrumb">企业服务端 / 合同管理</div><button class="btn primary" style="margin-left:auto">+ 新建合同</button></div>
+            <div class="filter-bar"><select class="filter-select"><option>全部类型</option><option>来料合同</option><option>进料手册</option></select><select class="filter-select"><option>全部状态</option><option>生效中</option><option>待审批</option></select><input class="filter-input" placeholder="搜索编号..."><button class="btn outline">搜索</button></div>
+            <div class="card"><table class="data-table"><thead><tr><th>合同编号</th><th>类型</th><th>委托方</th><th>合同量</th><th>执行进度</th><th>有效期</th><th>状态</th><th>操作</th></tr></thead><tbody>
+                <tr><td class="mono">HT-2026-0045</td><td><span class="tag blue">来料</span></td><td>HK Gold Trading</td><td>500 kg</td><td><div class="mini-progress"><div class="mini-bar" style="width:65%"></div><span>65%</span></div></td><td>01~06月</td><td><span class="status active">生效</span></td><td><a class="link">管理</a></td></tr>
+                <tr><td class="mono">HT-2026-0044</td><td><span class="tag purple">进料</span></td><td>自主进口</td><td>1000 kg</td><td><div class="mini-progress"><div class="mini-bar" style="width:30%"></div><span>30%</span></div></td><td>01~12月</td><td><span class="status active">生效</span></td><td><a class="link">管理</a></td></tr>
+                <tr><td class="mono">HT-2026-0043</td><td><span class="tag blue">来料</span></td><td>Singapore Precious</td><td>300 kg</td><td><div class="mini-progress"><div class="mini-bar warn" style="width:90%"></div><span>90%</span></div></td><td>02~05月</td><td><span class="status warn">即将到期</span></td><td><a class="link">管理</a></td></tr>
+            </tbody></table></div>
+        </div>
+
+        <!-- To B: 加工进度 -->
+        <div class="page" id="page-b-processing">
+            <div class="page-header"><h2>加工进度跟踪</h2><div class="breadcrumb">企业服务端 / 加工进度</div></div>
+            <div class="card"><div class="card-header"><h3>批次 GBP-2026-0092</h3><span class="status processing">加工中</span></div>
+                <div class="process-timeline">
+                    <div class="pt-step done"><div class="pt-dot">✓</div><div class="pt-info"><div class="pt-title">委托接收</div><div class="pt-time">04-12 09:30</div></div></div><div class="pt-line done"></div>
+                    <div class="pt-step done"><div class="pt-dot">✓</div><div class="pt-info"><div class="pt-title">保税入境</div><div class="pt-time">04-12 14:20</div><div class="pt-detail">黄埔海关已核放</div></div></div><div class="pt-line done"></div>
+                    <div class="pt-step done"><div class="pt-dot">✓</div><div class="pt-info"><div class="pt-title">入库称重</div><div class="pt-time">04-12 16:45</div><div class="pt-detail">实际 150.02 kg</div></div></div><div class="pt-line active"></div>
+                    <div class="pt-step active"><div class="pt-dot pulse">4</div><div class="pt-info"><div class="pt-title">精炼加工中</div><div class="pt-time">04-13 08:00 开始</div><div class="pt-detail">纯度 98.7% → 目标 99.99%</div></div></div><div class="pt-line"></div>
+                    <div class="pt-step"><div class="pt-dot">5</div><div class="pt-info"><div class="pt-title">品质检测</div></div></div><div class="pt-line"></div>
+                    <div class="pt-step"><div class="pt-dot">6</div><div class="pt-info"><div class="pt-title">出境报关</div></div></div><div class="pt-line"></div>
+                    <div class="pt-step"><div class="pt-dot">7</div><div class="pt-info"><div class="pt-title">交割完成</div></div></div>
+                </div>
+            </div>
+            <div class="iot-grid">
+                <div class="iot-card"><div class="iot-title">🌡️ 炉温</div><div class="iot-value">1,064 <small>°C</small></div><div class="iot-status normal">正常</div></div>
+                <div class="iot-card"><div class="iot-title">⚖️ 重量</div><div class="iot-value">149.35 <small>kg</small></div><div class="iot-status normal">损耗 0.45%</div></div>
+                <div class="iot-card"><div class="iot-title">💎 纯度</div><div class="iot-value">98.7 <small>%</small></div><div class="iot-status warn">精炼中</div></div>
+                <div class="iot-card"><div class="iot-title">⏱️ 剩余</div><div class="iot-value">28 <small>h</small></div><div class="iot-status normal">按计划</div></div>
+            </div>
+        </div>
+
+        <!-- To B: 通关申报 -->
+        <div class="page" id="page-b-customs">
+            <div class="page-header"><h2>通关申报</h2><div class="breadcrumb">企业服务端 / 通关申报</div><button class="btn primary" style="margin-left:auto">+ 新建申报</button></div>
+            <div class="card"><table class="data-table"><thead><tr><th>申报编号</th><th>关联批次</th><th>类型</th><th>重量</th><th>状态</th><th>海关回执</th><th>操作</th></tr></thead><tbody>
+                <tr><td class="mono">SB-0156</td><td class="mono">GBP-0092</td><td><span class="tag green">入境</span></td><td>150 kg</td><td><span class="status done">已核放</span></td><td>黄埔 04-12</td><td><a class="link">详情</a></td></tr>
+                <tr><td class="mono">SB-0155</td><td class="mono">GBP-0089</td><td><span class="tag orange">出境</span></td><td>124.8 kg</td><td><span class="status pending">待核放</span></td><td>—</td><td><a class="link">详情</a></td></tr>
+            </tbody></table></div>
+        </div>
+
+        <!-- To B: 占位页 -->
+        <div class="page" id="page-b-warehouse"><div class="page-header"><h2>保税仓管理</h2><div class="breadcrumb">仓储物流 / 保税仓</div></div><div class="placeholder-page"><div class="ph-icon">📦</div><p>库存管理 · RFID追踪 · 库位地图 · 视频联网</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-b-logistics"><div class="page-header"><h2>物流追踪</h2><div class="breadcrumb">仓储物流 / 物流</div></div><div class="placeholder-page"><div class="ph-icon">🚛</div><p>GPS追踪 · 电子关锁 · 押运调度</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-b-testing"><div class="page-header"><h2>检测认证</h2><div class="breadcrumb">检测结算 / 检测</div></div><div class="placeholder-page"><div class="ph-icon">🔬</div><p>成色检测 · 香港金标准 · LBMA · 电子报告库</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-b-settlement"><div class="page-header"><h2>结算中心</h2><div class="breadcrumb">检测结算 / 结算</div></div><div class="placeholder-page"><div class="ph-icon">💰</div><p>跨境结算 · 黄金计价 · 质押融资 · G-COIN接口</p><span>功能开发中</span></div></div>
+
+        <!-- To G: 监管驾驶舱 -->
+        <div class="page" id="page-g-dashboard">
+            <div class="page-header"><h2>监管驾驶舱</h2><div class="breadcrumb">监管服务端 / 驾驶舱</div><div class="header-time" style="margin-left:auto"><span class="live-dot"></span> 实时数据 2026-04-15 10:30</div></div>
+            <div class="kpi-row g">
+                <div class="kpi-card g"><div class="kpi-icon gold">Au</div><div><div class="kpi-val">2,847.5 <small>kg</small></div><div class="kpi-label">本月加工量</div><div class="kpi-sub up">↑12.3%</div></div></div>
+                <div class="kpi-card g"><div class="kpi-icon blue">📋</div><div><div class="kpi-val">156 <small>单</small></div><div class="kpi-label">通关批次</div><div class="kpi-sub up">↑8.7%</div></div></div>
+                <div class="kpi-card g"><div class="kpi-icon green">✓</div><div><div class="kpi-val">99.2<small>%</small></div><div class="kpi-label">合规率</div><div class="kpi-sub up">↑0.3%</div></div></div>
+                <div class="kpi-card g"><div class="kpi-icon orange">⚠️</div><div><div class="kpi-val">3</div><div class="kpi-label">预警</div><div class="kpi-sub down">↓2条</div></div></div>
+                <div class="kpi-card g"><div class="kpi-icon purple">🏢</div><div><div class="kpi-val">28 <small>家</small></div><div class="kpi-label">活跃企业</div><div class="kpi-sub up">↑4</div></div></div>
+            </div>
+            <div class="two-col">
+                <div class="card"><div class="card-header"><h3>🔴 实时监控</h3><span class="live-badge">LIVE</span></div>
+                    <div class="monitor-list">
+                        <div class="monitor-row"><span class="status transit">在途</span><span class="mono">GBP-0092</span><span>香港→东莞</span><span class="gold">125 kg</span><div class="bar-wrap"><div class="bar-fill" style="width:65%"></div></div></div>
+                        <div class="monitor-row"><span class="status processing">加工</span><span class="mono">GBP-0091</span><span>精炼车间</span><span class="gold">200 kg</span><div class="bar-wrap"><div class="bar-fill orange" style="width:45%"></div></div></div>
+                        <div class="monitor-row"><span class="status testing">检测</span><span class="mono">GBP-0089</span><span>品质检测</span><span class="gold">180.5 kg</span><div class="bar-wrap"><div class="bar-fill purple" style="width:90%"></div></div></div>
+                        <div class="monitor-row"><span class="status done">完成</span><span class="mono">GBP-0087</span><span>已交割</span><span class="gold">150 kg</span><div class="bar-wrap"><div class="bar-fill green" style="width:100%"></div></div></div>
+                    </div>
+                </div>
+                <div class="card"><div class="card-header"><h3>⚠️ 风控预警</h3></div>
+                    <div class="alert-list">
+                        <div class="alert-row warn"><div class="alert-lv">中</div><div><div class="alert-t">损耗率偏高</div><div class="alert-d">GBP-0091 损耗0.48%，逼近0.5%</div><div class="alert-time">10分钟前</div></div></div>
+                        <div class="alert-row info"><div class="alert-lv low">低</div><div><div class="alert-t">库存容量</div><div class="alert-d">A区仓库已达85%</div><div class="alert-time">1小时前</div></div></div>
+                        <div class="alert-row info"><div class="alert-lv low">低</div><div><div class="alert-t">核销到期</div><div class="alert-d">3份合同7日内到期</div><div class="alert-time">3小时前</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- To G: 业务审批 -->
+        <div class="page" id="page-g-approval">
+            <div class="page-header"><h2>业务审批</h2><div class="breadcrumb">监管服务端 / 业务审批</div></div>
+            <div class="filter-bar"><button class="filter-tab active">待审批 <span class="count-badge">5</span></button><button class="filter-tab">已审批</button><button class="filter-tab">已退回</button></div>
+            <div class="card"><table class="data-table"><thead><tr><th>申请编号</th><th>企业</th><th>类型</th><th>原料量</th><th>提交时间</th><th>紧急</th><th>操作</th></tr></thead><tbody>
+                <tr class="highlight"><td class="mono">GBP-0093</td><td>张氏黄金贸易</td><td><span class="tag blue">来料</span></td><td>250 kg</td><td>04-15 08:30</td><td><span class="urgency high">紧急</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
+                <tr><td class="mono">GBP-0091</td><td>众恒隆国际</td><td><span class="tag purple">进料</span></td><td>200 kg</td><td>04-11 14:20</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
+                <tr><td class="mono">HT-0046</td><td>Singapore Precious</td><td><span class="tag green">合同</span></td><td>600 kg</td><td>04-10 10:15</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
+                <tr><td class="mono">GBP-0090</td><td>恒丰金业</td><td><span class="tag blue">来料</span></td><td>180 kg</td><td>04-09 16:40</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
+                <tr><td class="mono">SB-0157</td><td>张氏黄金贸易</td><td><span class="tag orange">出境</span></td><td>124.8 kg</td><td>04-08 09:00</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
+            </tbody></table></div>
+        </div>
+
+        <!-- To G: 占位页 -->
+        <div class="page" id="page-g-enterprise"><div class="page-header"><h2>企业管理</h2><div class="breadcrumb">审批管理 / 企业</div></div><div class="placeholder-page"><div class="ph-icon">🏢</div><p>企业档案 · 信用评级 · 经营分析</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-g-whitelist"><div class="page-header"><h2>白名单资质</h2><div class="breadcrumb">审批管理 / 白名单</div></div><div class="placeholder-page"><div class="ph-icon">📜</div><p>资质申报 · 审核 · 年度复评</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-g-ledger"><div class="page-header"><h2>统一底账</h2><div class="breadcrumb">监管核查 / 底账</div></div><div class="placeholder-page"><div class="ph-icon">📒</div><p>行业底账 · 料件台账 · 库存比对</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-g-verify"><div class="page-header"><h2>核销核查</h2><div class="breadcrumb">监管核查 / 核销</div></div><div class="placeholder-page"><div class="ph-icon">🔍</div><p>来料核销 · 进料核销 · 损耗审核</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-g-risk"><div class="page-header"><h2>风控预警</h2><div class="breadcrumb">监管核查 / 风控</div></div><div class="placeholder-page"><div class="ph-icon">⚠️</div><p>AI风控 · 异常检测 · 价格预警</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-g-stats"><div class="page-header"><h2>统计分析</h2><div class="breadcrumb">数据中心 / 统计</div></div><div class="placeholder-page"><div class="ph-icon">📈</div><p>趋势分析 · 企业排名 · 合规报表</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-g-exchange"><div class="page-header"><h2>双关数据交换</h2><div class="breadcrumb">数据中心 / 双关</div></div><div class="placeholder-page"><div class="ph-icon">🔄</div><p>香港海关↔黄埔海关 · 单证交换 · 同步状态</p><span>功能开发中</span></div></div>
+    </main>
+</div>
+
+<!-- 审批弹窗 -->
+<div class="modal-overlay hidden" id="approvalModal">
+    <div class="modal">
+        <div class="modal-header"><h3>业务审批 — GBP-2026-0093</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
+        <div class="modal-body">
+            <div class="approval-info">
+                <div class="ai-row"><span class="ai-label">申请企业</span><span>张氏黄金贸易有限公司</span></div>
+                <div class="ai-row"><span class="ai-label">业务类型</span><span class="tag blue">来料加工</span></div>
+                <div class="ai-row"><span class="ai-label">委托方</span><span>Hong Kong Gold Trading Co.</span></div>
+                <div class="ai-row"><span class="ai-label">原料量</span><span class="gold">250.00 kg</span></div>
+                <div class="ai-row"><span class="ai-label">纯度</span><span>95.5% → 99.99%</span></div>
+                <div class="ai-row"><span class="ai-label">工厂</span><span>众恒隆·东莞精炼厂</span></div>
+                <div class="ai-row"><span class="ai-label">关联合同</span><span class="mono">HT-2026-0045</span></div>
+            </div>
+            <div class="approval-check"><h4>合规检查</h4>
+                <label class="check-item"><input type="checkbox" checked><span>企业资质</span><span class="check-ok">✓</span></label>
+                <label class="check-item"><input type="checkbox" checked><span>合同有效</span><span class="check-ok">✓</span></label>
+                <label class="check-item"><input type="checkbox" checked><span>量在范围内</span><span class="check-ok">✓</span></label>
+                <label class="check-item"><input type="checkbox" checked><span>工厂合规</span><span class="check-ok">✓</span></label>
+                <label class="check-item"><input type="checkbox"><span>底账余额</span><span class="check-pending">待确认</span></label>
+            </div>
+            <div class="form-group"><label>审批意见</label><textarea rows="2" placeholder="请输入..."></textarea></div>
+        </div>
+        <div class="modal-footer"><button class="btn danger" onclick="closeModal()">退回</button><button class="btn primary" onclick="approveSuccess()">审批通过</button></div>
+    </div>
+</div>
+
+<div class="toast hidden" id="toast"><span class="toast-icon">✓</span><span id="toastMsg"></span></div>
+
+<script src="platform.js"></script>
+</body>
+</html>
