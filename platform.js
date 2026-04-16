@@ -248,7 +248,20 @@ function showRoleSelect() {
 
 // ========== 侧边栏 ==========
 function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('collapsed');
+  const sb = document.getElementById('sidebar');
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    sb.classList.toggle('open');
+  } else {
+    sb.classList.toggle('collapsed');
+  }
+}
+
+// Close sidebar when clicking a menu item on mobile
+function closeMobileSidebar() {
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('open');
+  }
 }
 
 // ========== 导航 ==========
@@ -258,6 +271,7 @@ function navigateTo(el) {
   document.querySelectorAll('#' + menu + ' .menu-item').forEach(m => m.classList.remove('active'));
   el.classList.add('active');
   showPage(page);
+  closeMobileSidebar();
 }
 
 function navigateToPage(pageId) {
