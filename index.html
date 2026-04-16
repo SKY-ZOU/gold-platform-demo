@@ -6,11 +6,13 @@
     <title>大湾区跨境黄金保税加工智慧监管服务平台</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="platform.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 </head>
 <body>
 
 <!-- ==================== 角色选择入口 ==================== -->
 <div id="roleSelect" class="role-select-overlay">
+    <canvas id="particleCanvas"></canvas>
     <div class="role-select-content">
         <div class="role-logo">
             <svg viewBox="0 0 40 40" width="52" height="52">
@@ -52,7 +54,7 @@
                 <button class="rc-btn gov">进入监管端 →</button>
             </div>
         </div>
-        <div class="role-footer">一带一路国际黄金集团 · Belt & Road International Gold Group Limited<br><span>DEMO v2.0 · 2026年4月</span></div>
+        <div class="role-footer">一带一路国际黄金集团 · Belt & Road International Gold Group Limited<br><span>DEMO v3.0 · 2026年4月</span></div>
     </div>
 </div>
 
@@ -77,33 +79,33 @@
     <aside class="sidebar" id="sidebar">
         <nav class="sidebar-nav" id="menuBusiness">
             <div class="menu-group"><div class="menu-group-title">工作台</div>
-                <a class="menu-item active" data-page="b-dashboard" onclick="navigateTo(this)"><span class="mi-icon">📊</span>工作台首页</a></div>
+                <a class="menu-item active" data-page="b-dashboard" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="2" y="10" width="3" height="8" rx="1"/><rect x="7" y="6" width="3" height="12" rx="1"/><rect x="12" y="2" width="3" height="16" rx="1"/><rect x="17" y="8" width="3" height="10" rx="1" opacity="0.5"/></svg></span>工作台首页</a></div>
             <div class="menu-group"><div class="menu-group-title">业务办理</div>
-                <a class="menu-item" data-page="b-apply" onclick="navigateTo(this)"><span class="mi-icon">📝</span>保税加工申请<span class="mi-badge">新</span></a>
-                <a class="menu-item" data-page="b-contracts" onclick="navigateTo(this)"><span class="mi-icon">📋</span>合同/手册管理</a>
-                <a class="menu-item" data-page="b-processing" onclick="navigateTo(this)"><span class="mi-icon">🔥</span>加工进度跟踪</a>
-                <a class="menu-item" data-page="b-customs" onclick="navigateTo(this)"><span class="mi-icon">🛃</span>通关申报</a></div>
+                <a class="menu-item" data-page="b-apply" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 2h8l4 4v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm7 1v4h4M6 10h8M6 14h5"/></svg></span>保税加工申请<span class="mi-badge">新</span></a>
+                <a class="menu-item" data-page="b-contracts" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="3" y="1" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="10" x2="14" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="14" x2="11" y2="14" stroke="currentColor" stroke-width="1.5"/></svg></span>合同/手册管理</a>
+                <a class="menu-item" data-page="b-processing" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 5v5l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>加工进度跟踪</a>
+                <a class="menu-item" data-page="b-customs" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="2" y="8" width="16" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 8V5a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>通关申报</a></div>
             <div class="menu-group"><div class="menu-group-title">仓储物流</div>
-                <a class="menu-item" data-page="b-warehouse" onclick="navigateTo(this)"><span class="mi-icon">📦</span>保税仓管理</a>
-                <a class="menu-item" data-page="b-logistics" onclick="navigateTo(this)"><span class="mi-icon">🚛</span>物流追踪</a></div>
+                <a class="menu-item" data-page="b-warehouse" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="2" y="8" width="16" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="2,8 10,2 18,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>保税仓管理</a>
+                <a class="menu-item" data-page="b-logistics" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="1" y="7" width="11" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 9h4l2 3v3h-6V9z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="16" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="16" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>物流追踪</a></div>
             <div class="menu-group"><div class="menu-group-title">检测与结算</div>
-                <a class="menu-item" data-page="b-testing" onclick="navigateTo(this)"><span class="mi-icon">🔬</span>检测认证</a>
-                <a class="menu-item" data-page="b-settlement" onclick="navigateTo(this)"><span class="mi-icon">💰</span>结算中心</a></div>
+                <a class="menu-item" data-page="b-testing" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M7 2h6v6l4 8a2 2 0 01-2 3H5a2 2 0 01-2-3l4-8V2z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="2" x2="14" y2="2" stroke="currentColor" stroke-width="1.5"/></svg></span>检测认证</a>
+                <a class="menu-item" data-page="b-settlement" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="10" y="14" text-anchor="middle" font-size="10" font-weight="bold" fill="currentColor">$</text></svg></span>结算中心</a></div>
         </nav>
         <nav class="sidebar-nav hidden" id="menuGov">
             <div class="menu-group"><div class="menu-group-title">监管工作台</div>
-                <a class="menu-item active" data-page="g-dashboard" onclick="navigateTo(this)"><span class="mi-icon">📊</span>监管驾驶舱</a></div>
+                <a class="menu-item active" data-page="g-dashboard" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="2" y="10" width="3" height="8" rx="1"/><rect x="7" y="6" width="3" height="12" rx="1"/><rect x="12" y="2" width="3" height="16" rx="1"/><rect x="17" y="8" width="3" height="10" rx="1" opacity="0.5"/></svg></span>监管驾驶舱</a></div>
             <div class="menu-group"><div class="menu-group-title">审批管理</div>
-                <a class="menu-item" data-page="g-approval" onclick="navigateTo(this)"><span class="mi-icon">✅</span>业务审批<span class="mi-badge warn">5</span></a>
-                <a class="menu-item" data-page="g-enterprise" onclick="navigateTo(this)"><span class="mi-icon">🏢</span>企业管理</a>
-                <a class="menu-item" data-page="g-whitelist" onclick="navigateTo(this)"><span class="mi-icon">📜</span>白名单资质</a></div>
+                <a class="menu-item" data-page="g-approval" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="6,10 9,13 14,7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>业务审批<span class="mi-badge warn">5</span></a>
+                <a class="menu-item" data-page="g-enterprise" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="4" y="3" width="12" height="15" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="6" width="2" height="2" rx="0.5"/><rect x="11" y="6" width="2" height="2" rx="0.5"/><rect x="7" y="10" width="2" height="2" rx="0.5"/><rect x="11" y="10" width="2" height="2" rx="0.5"/><rect x="8" y="14" width="4" height="4"/></svg></span>企业管理</a>
+                <a class="menu-item" data-page="g-whitelist" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 2h8l4 4v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 11l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>白名单资质</a></div>
             <div class="menu-group"><div class="menu-group-title">监管核查</div>
-                <a class="menu-item" data-page="g-ledger" onclick="navigateTo(this)"><span class="mi-icon">📒</span>统一底账</a>
-                <a class="menu-item" data-page="g-verify" onclick="navigateTo(this)"><span class="mi-icon">🔍</span>核销核查</a>
-                <a class="menu-item" data-page="g-risk" onclick="navigateTo(this)"><span class="mi-icon">⚠️</span>风控预警<span class="mi-badge danger">3</span></a></div>
+                <a class="menu-item" data-page="g-ledger" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><rect x="3" y="2" width="14" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="3" y1="7" x2="17" y2="7" stroke="currentColor" stroke-width="1"/><line x1="8" y1="7" x2="8" y2="18" stroke="currentColor" stroke-width="1"/></svg></span>统一底账</a>
+                <a class="menu-item" data-page="g-verify" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="13" y1="13" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>核销核查</a>
+                <a class="menu-item" data-page="g-risk" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2L2 18h16L10 2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="10" y1="8" x2="10" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="currentColor"/></svg></span>风控预警<span class="mi-badge danger">3</span></a></div>
             <div class="menu-group"><div class="menu-group-title">数据中心</div>
-                <a class="menu-item" data-page="g-stats" onclick="navigateTo(this)"><span class="mi-icon">📈</span>统计分析</a>
-                <a class="menu-item" data-page="g-exchange" onclick="navigateTo(this)"><span class="mi-icon">🔄</span>双关数据交换</a></div>
+                <a class="menu-item" data-page="g-stats" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><polyline points="2,16 6,8 10,12 14,4 18,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="8" r="1.5" fill="currentColor"/><circle cx="10" cy="12" r="1.5" fill="currentColor"/><circle cx="14" cy="4" r="1.5" fill="currentColor"/></svg></span>统计分析</a>
+                <a class="menu-item" data-page="g-exchange" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 7h10l-3-3M16 13H6l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>双关数据交换</a></div>
         </nav>
     </aside>
 
@@ -112,17 +114,17 @@
         <!-- To B: 工作台 -->
         <div class="page active" id="page-b-dashboard">
             <div class="page-header"><h2>工作台</h2><div class="breadcrumb">企业服务端 / 工作台首页</div></div>
-            <div class="todo-banner">
+            <div class="todo-banner stagger">
                 <div class="todo-item"><span class="todo-count">2</span>待审批合同</div>
                 <div class="todo-item"><span class="todo-count warn">1</span>加工异常</div>
                 <div class="todo-item"><span class="todo-count">3</span>待核销批次</div>
                 <div class="todo-item"><span class="todo-count info">2</span>报告待确认</div>
             </div>
-            <div class="kpi-row">
-                <div class="kpi-card"><div class="kpi-val">12</div><div class="kpi-label">本月申请单</div><div class="kpi-sub up">↑ 3 vs上月</div></div>
-                <div class="kpi-card"><div class="kpi-val">856.5 <small>kg</small></div><div class="kpi-label">本月加工量</div><div class="kpi-sub up">↑ 12%</div></div>
-                <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">在途批次</div><div class="kpi-sub">追踪中</div></div>
-                <div class="kpi-card"><div class="kpi-val">99.2%</div><div class="kpi-label">合规率</div><div class="kpi-sub up">↑ 0.3%</div></div>
+            <div class="kpi-row stagger">
+                <div class="kpi-card"><div class="kpi-val">12</div><div class="kpi-label">本月申请单</div><div class="kpi-sub up">↑ 3 vs上月</div><svg class="sparkline" viewBox="0 0 80 24"><polyline points="0,20 10,16 20,18 30,12 40,14 50,8 60,10 70,4 80,6" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/></svg></div>
+                <div class="kpi-card"><div class="kpi-val">856.5 <small>kg</small></div><div class="kpi-label">本月加工量</div><div class="kpi-sub up">↑ 12%</div><svg class="sparkline" viewBox="0 0 80 24"><polyline points="0,20 10,16 20,18 30,12 40,14 50,8 60,10 70,4 80,6" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/></svg></div>
+                <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">在途批次</div><div class="kpi-sub">追踪中</div><svg class="sparkline" viewBox="0 0 80 24"><polyline points="0,12 10,14 20,10 30,16 40,12 50,14 60,10 70,12 80,11" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/></svg></div>
+                <div class="kpi-card"><div class="kpi-val">99.2%</div><div class="kpi-label">合规率</div><div class="kpi-sub up">↑ 0.3%</div><svg class="sparkline" viewBox="0 0 80 24"><polyline points="0,18 10,16 20,14 30,12 40,10 50,8 60,6 70,4 80,4" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/></svg></div>
             </div>
             <div class="card"><div class="card-header"><h3>最近业务</h3><a class="link">查看全部 →</a></div>
                 <table class="data-table"><thead><tr><th>业务编号</th><th>类型</th><th>原料量</th><th>状态</th><th>提交日期</th><th>操作</th></tr></thead><tbody>
@@ -192,7 +194,7 @@
                     <div class="pt-step"><div class="pt-dot">7</div><div class="pt-info"><div class="pt-title">交割完成</div></div></div>
                 </div>
             </div>
-            <div class="iot-grid">
+            <div class="iot-grid stagger">
                 <div class="iot-card"><div class="iot-title">🌡️ 炉温</div><div class="iot-value">1,064 <small>°C</small></div><div class="iot-status normal">正常</div></div>
                 <div class="iot-card"><div class="iot-title">⚖️ 重量</div><div class="iot-value">149.35 <small>kg</small></div><div class="iot-status normal">损耗 0.45%</div></div>
                 <div class="iot-card"><div class="iot-title">💎 纯度</div><div class="iot-value">98.7 <small>%</small></div><div class="iot-status warn">精炼中</div></div>
@@ -210,23 +212,77 @@
         </div>
 
         <!-- To B: 占位页 -->
-        <div class="page" id="page-b-warehouse"><div class="page-header"><h2>保税仓管理</h2><div class="breadcrumb">仓储物流 / 保税仓</div></div><div class="placeholder-page"><div class="ph-icon">📦</div><p>库存管理 · RFID追踪 · 库位地图 · 视频联网</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-b-logistics"><div class="page-header"><h2>物流追踪</h2><div class="breadcrumb">仓储物流 / 物流</div></div><div class="placeholder-page"><div class="ph-icon">🚛</div><p>GPS追踪 · 电子关锁 · 押运调度</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-b-testing"><div class="page-header"><h2>检测认证</h2><div class="breadcrumb">检测结算 / 检测</div></div><div class="placeholder-page"><div class="ph-icon">🔬</div><p>成色检测 · 香港金标准 · LBMA · 电子报告库</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-b-settlement"><div class="page-header"><h2>结算中心</h2><div class="breadcrumb">检测结算 / 结算</div></div><div class="placeholder-page"><div class="ph-icon">💰</div><p>跨境结算 · 黄金计价 · 质押融资 · G-COIN接口</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-b-warehouse"><div class="page-header"><h2>保税仓管理</h2><div class="breadcrumb">仓储物流 / 保税仓</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">库存管理 · RFID追踪 · 库位地图 · 视频联网</p></div></div></div>
+        <div class="page" id="page-b-logistics"><div class="page-header"><h2>物流追踪</h2><div class="breadcrumb">仓储物流 / 物流</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">GPS追踪 · 电子关锁 · 押运调度</p></div></div></div>
+        <div class="page" id="page-b-testing"><div class="page-header"><h2>检测认证</h2><div class="breadcrumb">检测结算 / 检测</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">成色检测 · 香港金标准 · LBMA · 电子报告库</p></div></div></div>
+        <div class="page" id="page-b-settlement"><div class="page-header"><h2>结算中心</h2><div class="breadcrumb">检测结算 / 结算</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">跨境结算 · 黄金计价 · 质押融资 · G-COIN接口</p></div></div></div>
 
         <!-- To G: 监管驾驶舱 -->
         <div class="page" id="page-g-dashboard">
             <div class="page-header"><h2>监管驾驶舱</h2><div class="breadcrumb">监管服务端 / 驾驶舱</div><div class="header-time" style="margin-left:auto"><span class="live-dot"></span> 实时数据 2026-04-15 10:30</div></div>
-            <div class="kpi-row g">
+            <div class="kpi-row g stagger">
                 <div class="kpi-card g"><div class="kpi-icon gold">Au</div><div><div class="kpi-val">2,847.5 <small>kg</small></div><div class="kpi-label">本月加工量</div><div class="kpi-sub up">↑12.3%</div></div></div>
                 <div class="kpi-card g"><div class="kpi-icon blue">📋</div><div><div class="kpi-val">156 <small>单</small></div><div class="kpi-label">通关批次</div><div class="kpi-sub up">↑8.7%</div></div></div>
                 <div class="kpi-card g"><div class="kpi-icon green">✓</div><div><div class="kpi-val">99.2<small>%</small></div><div class="kpi-label">合规率</div><div class="kpi-sub up">↑0.3%</div></div></div>
                 <div class="kpi-card g"><div class="kpi-icon orange">⚠️</div><div><div class="kpi-val">3</div><div class="kpi-label">预警</div><div class="kpi-sub down">↓2条</div></div></div>
                 <div class="kpi-card g"><div class="kpi-icon purple">🏢</div><div><div class="kpi-val">28 <small>家</small></div><div class="kpi-label">活跃企业</div><div class="kpi-sub up">↑4</div></div></div>
             </div>
-            <div class="two-col">
-                <div class="card"><div class="card-header"><h3>🔴 实时监控</h3><span class="live-badge">LIVE</span></div>
+            <!-- Row 2: Charts grid -->
+            <div class="charts-grid-3" style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px;margin-bottom:16px">
+                <div class="card chart-container" style="height:300px;padding:16px">
+                    <div class="chart-title"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"><polyline points="2,16 6,8 10,12 14,4 18,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 月度加工量趋势</div>
+                    <div id="chartTrend" style="height:240px"></div>
+                </div>
+                <div class="card chart-container" style="height:300px;padding:16px">
+                    <div class="chart-title"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 5v5l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> 综合损耗率</div>
+                    <div id="chartGauge" style="height:240px"></div>
+                </div>
+                <div class="card chart-container" style="height:300px;padding:16px">
+                    <div class="chart-title"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2a8 8 0 014 14.9V10H10V2z" fill="currentColor" opacity="0.3"/></svg> 交割目的地分布</div>
+                    <div id="chartPie" style="height:240px"></div>
+                </div>
+            </div>
+            <!-- Row 3: Map + Monitor + Alerts -->
+            <div class="three-col" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+                <div class="card map-container" style="height:280px;padding:20px">
+                    <div class="card-header"><h3><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"><circle cx="10" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2a6 6 0 016 6c0 4-6 10-6 10S4 12 4 8a6 6 0 016-6z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> 跨境物流路线</h3></div>
+                    <svg viewBox="0 0 500 200" style="width:100%;height:calc(100% - 40px)">
+                        <defs>
+                            <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#d4a842"/>
+                                <stop offset="100%" style="stop-color:#5b8def"/>
+                            </linearGradient>
+                            <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        </defs>
+                        <!-- Route paths -->
+                        <path d="M80,140 Q180,40 250,100 Q320,160 420,80" fill="none" stroke="url(#routeGrad)" stroke-width="2" class="map-route" opacity="0.6"/>
+                        <path d="M80,140 Q180,40 250,100 Q320,160 420,80" fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="8,6" class="map-route-dots"/>
+                        <!-- Nodes -->
+                        <g class="map-node">
+                            <circle cx="80" cy="140" r="8" fill="#d4a842" opacity="0.2"/><circle cx="80" cy="140" r="5" fill="#d4a842"/>
+                            <text x="80" y="170" text-anchor="middle" fill="#8896ab" font-size="11" font-family="'Noto Sans SC',sans-serif">香港</text>
+                            <text x="80" y="182" text-anchor="middle" fill="#556378" font-size="9">原料进口·交割</text>
+                        </g>
+                        <g class="map-node">
+                            <circle cx="250" cy="100" r="8" fill="#fbbf24" opacity="0.2"/><circle cx="250" cy="100" r="5" fill="#fbbf24"/>
+                            <text x="250" y="78" text-anchor="middle" fill="#8896ab" font-size="11" font-family="'Noto Sans SC',sans-serif">东莞·众恒隆</text>
+                            <text x="250" y="66" text-anchor="middle" fill="#556378" font-size="9">保税精炼加工</text>
+                        </g>
+                        <g class="map-node">
+                            <circle cx="420" cy="80" r="8" fill="#5b8def" opacity="0.2"/><circle cx="420" cy="80" r="5" fill="#5b8def"/>
+                            <text x="420" y="110" text-anchor="middle" fill="#8896ab" font-size="11" font-family="'Noto Sans SC',sans-serif">黄埔海关</text>
+                            <text x="420" y="122" text-anchor="middle" fill="#556378" font-size="9">监管核查</text>
+                        </g>
+                        <!-- Animated particles along route -->
+                        <circle r="3" fill="#d4a842" filter="url(#glow)">
+                            <animateMotion dur="4s" repeatCount="indefinite" path="M80,140 Q180,40 250,100 Q320,160 420,80"/>
+                        </circle>
+                        <circle r="3" fill="#5b8def" filter="url(#glow)">
+                            <animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M420,80 Q320,160 250,100 Q180,40 80,140"/>
+                        </circle>
+                    </svg>
+                </div>
+                <div class="card"><div class="card-header"><h3><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"><circle cx="10" cy="10" r="4" fill="#ef4444"/><circle cx="10" cy="10" r="7" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/></svg> 实时监控</h3><span class="live-badge">LIVE</span></div>
                     <div class="monitor-list">
                         <div class="monitor-row"><span class="status transit">在途</span><span class="mono">GBP-0092</span><span>香港→东莞</span><span class="gold">125 kg</span><div class="bar-wrap"><div class="bar-fill" style="width:65%"></div></div></div>
                         <div class="monitor-row"><span class="status processing">加工</span><span class="mono">GBP-0091</span><span>精炼车间</span><span class="gold">200 kg</span><div class="bar-wrap"><div class="bar-fill orange" style="width:45%"></div></div></div>
@@ -234,7 +290,7 @@
                         <div class="monitor-row"><span class="status done">完成</span><span class="mono">GBP-0087</span><span>已交割</span><span class="gold">150 kg</span><div class="bar-wrap"><div class="bar-fill green" style="width:100%"></div></div></div>
                     </div>
                 </div>
-                <div class="card"><div class="card-header"><h3>⚠️ 风控预警</h3></div>
+                <div class="card"><div class="card-header"><h3><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"><path d="M10 2L2 18h16L10 2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="10" y1="8" x2="10" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="15" r="1" fill="currentColor"/></svg> 风控预警</h3></div>
                     <div class="alert-list">
                         <div class="alert-row warn"><div class="alert-lv">中</div><div><div class="alert-t">损耗率偏高</div><div class="alert-d">GBP-0091 损耗0.48%，逼近0.5%</div><div class="alert-time">10分钟前</div></div></div>
                         <div class="alert-row info"><div class="alert-lv low">低</div><div><div class="alert-t">库存容量</div><div class="alert-d">A区仓库已达85%</div><div class="alert-time">1小时前</div></div></div>
@@ -258,13 +314,13 @@
         </div>
 
         <!-- To G: 占位页 -->
-        <div class="page" id="page-g-enterprise"><div class="page-header"><h2>企业管理</h2><div class="breadcrumb">审批管理 / 企业</div></div><div class="placeholder-page"><div class="ph-icon">🏢</div><p>企业档案 · 信用评级 · 经营分析</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-g-whitelist"><div class="page-header"><h2>白名单资质</h2><div class="breadcrumb">审批管理 / 白名单</div></div><div class="placeholder-page"><div class="ph-icon">📜</div><p>资质申报 · 审核 · 年度复评</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-g-ledger"><div class="page-header"><h2>统一底账</h2><div class="breadcrumb">监管核查 / 底账</div></div><div class="placeholder-page"><div class="ph-icon">📒</div><p>行业底账 · 料件台账 · 库存比对</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-g-verify"><div class="page-header"><h2>核销核查</h2><div class="breadcrumb">监管核查 / 核销</div></div><div class="placeholder-page"><div class="ph-icon">🔍</div><p>来料核销 · 进料核销 · 损耗审核</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-g-risk"><div class="page-header"><h2>风控预警</h2><div class="breadcrumb">监管核查 / 风控</div></div><div class="placeholder-page"><div class="ph-icon">⚠️</div><p>AI风控 · 异常检测 · 价格预警</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-g-stats"><div class="page-header"><h2>统计分析</h2><div class="breadcrumb">数据中心 / 统计</div></div><div class="placeholder-page"><div class="ph-icon">📈</div><p>趋势分析 · 企业排名 · 合规报表</p><span>功能开发中</span></div></div>
-        <div class="page" id="page-g-exchange"><div class="page-header"><h2>双关数据交换</h2><div class="breadcrumb">数据中心 / 双关</div></div><div class="placeholder-page"><div class="ph-icon">🔄</div><p>香港海关↔黄埔海关 · 单证交换 · 同步状态</p><span>功能开发中</span></div></div>
+        <div class="page" id="page-g-enterprise"><div class="page-header"><h2>企业管理</h2><div class="breadcrumb">审批管理 / 企业</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">企业档案 · 信用评级 · 经营分析</p></div></div></div>
+        <div class="page" id="page-g-whitelist"><div class="page-header"><h2>白名单资质</h2><div class="breadcrumb">审批管理 / 白名单</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">资质申报 · 审核 · 年度复评</p></div></div></div>
+        <div class="page" id="page-g-ledger"><div class="page-header"><h2>统一底账</h2><div class="breadcrumb">监管核查 / 底账</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">行业底账 · 料件台账 · 库存比对</p></div></div></div>
+        <div class="page" id="page-g-verify"><div class="page-header"><h2>核销核查</h2><div class="breadcrumb">监管核查 / 核销</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">来料核销 · 进料核销 · 损耗审核</p></div></div></div>
+        <div class="page" id="page-g-risk"><div class="page-header"><h2>风控预警</h2><div class="breadcrumb">监管核查 / 风控</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">AI风控 · 异常检测 · 价格预警</p></div></div></div>
+        <div class="page" id="page-g-stats"><div class="page-header"><h2>统计分析</h2><div class="breadcrumb">数据中心 / 统计</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">趋势分析 · 企业排名 · 合规报表</p></div></div></div>
+        <div class="page" id="page-g-exchange"><div class="page-header"><h2>双关数据交换</h2><div class="breadcrumb">数据中心 / 双关</div></div><div class="placeholder-page"><div class="skeleton-grid"><div class="skeleton" style="height:36px;width:200px;margin-bottom:20px"></div><div class="skeleton-row"><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div><div class="skeleton" style="height:80px"></div></div><div class="skeleton" style="height:200px;margin-top:16px"></div><div class="skeleton-row" style="margin-top:16px"><div class="skeleton" style="height:120px"></div><div class="skeleton" style="height:120px"></div></div></div><div class="placeholder-overlay"><div class="placeholder-badge">即将上线</div><p class="placeholder-desc">香港海关↔黄埔海关 · 单证交换 · 同步状态</p></div></div></div>
     </main>
 </div>
 
@@ -298,5 +354,172 @@
 <div class="toast hidden" id="toast"><span class="toast-icon">✓</span><span id="toastMsg"></span></div>
 
 <script src="platform.js"></script>
+<script>
+// === ECharts initialization for G-Dashboard ===
+function initGDashboardCharts() {
+    // Monthly trend chart
+    var trendEl = document.getElementById('chartTrend');
+    if (trendEl && typeof echarts !== 'undefined') {
+        var trendChart = echarts.init(trendEl);
+        trendChart.setOption({
+            tooltip: { trigger: 'axis', backgroundColor: 'rgba(20,28,40,0.9)', borderColor: '#d4a842', textStyle: { color: '#e0e6ed', fontSize: 12 } },
+            grid: { left: 40, right: 16, top: 10, bottom: 28 },
+            xAxis: { type: 'category', data: ['11月','12月','1月','2月','3月','4月'], axisLine: { lineStyle: { color: '#2a3444' } }, axisLabel: { color: '#8896ab', fontSize: 11 } },
+            yAxis: { type: 'value', splitLine: { lineStyle: { color: '#1e2a38' } }, axisLabel: { color: '#8896ab', fontSize: 11, formatter: '{value} kg' } },
+            series: [
+                { name: '来料加工', type: 'bar', barWidth: 16, itemStyle: { color: 'rgba(212,168,66,0.7)', borderRadius: [3,3,0,0] }, data: [1800, 2100, 1950, 2300, 2600, 2847] },
+                { name: '进料加工', type: 'bar', barWidth: 16, itemStyle: { color: 'rgba(91,141,239,0.5)', borderRadius: [3,3,0,0] }, data: [600, 750, 800, 680, 720, 810] },
+                { name: '总量趋势', type: 'line', smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { color: '#d4a842', width: 2 }, itemStyle: { color: '#d4a842' }, data: [2400, 2850, 2750, 2980, 3320, 3657] }
+            ]
+        });
+        window.addEventListener('resize', function() { trendChart.resize(); });
+    }
+
+    // Gauge chart
+    var gaugeEl = document.getElementById('chartGauge');
+    if (gaugeEl && typeof echarts !== 'undefined') {
+        var gaugeChart = echarts.init(gaugeEl);
+        gaugeChart.setOption({
+            series: [{
+                type: 'gauge',
+                startAngle: 210, endAngle: -30,
+                min: 0, max: 1,
+                center: ['50%', '58%'],
+                radius: '85%',
+                axisLine: { lineStyle: { width: 14, color: [[0.3, '#34d399'], [0.5, '#d4a842'], [0.7, '#f59e0b'], [1, '#ef4444']] } },
+                pointer: { length: '55%', width: 4, itemStyle: { color: '#d4a842' } },
+                axisTick: { show: false },
+                splitLine: { show: false },
+                axisLabel: { color: '#8896ab', fontSize: 10, distance: -30, formatter: function(v) { return (v * 100).toFixed(0) + '%'; } },
+                detail: { valueAnimation: true, formatter: '{value}%', color: '#e0e6ed', fontSize: 22, fontWeight: 'bold', offsetCenter: [0, '70%'] },
+                data: [{ value: 0.32, name: '综合损耗率', title: { color: '#8896ab', fontSize: 11, offsetCenter: [0, '90%'] } }]
+            }]
+        });
+        window.addEventListener('resize', function() { gaugeChart.resize(); });
+    }
+
+    // Pie chart
+    var pieEl = document.getElementById('chartPie');
+    if (pieEl && typeof echarts !== 'undefined') {
+        var pieChart = echarts.init(pieEl);
+        pieChart.setOption({
+            tooltip: { trigger: 'item', backgroundColor: 'rgba(20,28,40,0.9)', borderColor: '#d4a842', textStyle: { color: '#e0e6ed', fontSize: 12 } },
+            series: [{
+                type: 'pie',
+                radius: ['40%', '68%'],
+                center: ['50%', '52%'],
+                label: { color: '#8896ab', fontSize: 11 },
+                labelLine: { lineStyle: { color: '#3a4555' } },
+                itemStyle: { borderRadius: 4, borderColor: '#0d1520', borderWidth: 2 },
+                data: [
+                    { value: 45, name: '香港', itemStyle: { color: '#d4a842' } },
+                    { value: 25, name: '新加坡', itemStyle: { color: '#5b8def' } },
+                    { value: 15, name: '迪拜', itemStyle: { color: '#34d399' } },
+                    { value: 10, name: '伦敦', itemStyle: { color: '#a78bfa' } },
+                    { value: 5, name: '其他', itemStyle: { color: '#64748b' } }
+                ]
+            }]
+        });
+        window.addEventListener('resize', function() { pieChart.resize(); });
+    }
+}
+
+// Observe page visibility to init charts when g-dashboard becomes active
+var gDashPage = document.getElementById('page-g-dashboard');
+if (gDashPage) {
+    var _origNavigateTo = window.navigateTo;
+    var _chartsInited = false;
+    function tryInitCharts() {
+        if (!_chartsInited && gDashPage.classList.contains('active')) {
+            _chartsInited = true;
+            setTimeout(initGDashboardCharts, 100);
+        }
+    }
+    // Patch navigateTo to detect page switch
+    var _checkInterval = setInterval(function() {
+        if (typeof navigateTo === 'function' && !window._navPatched) {
+            window._navPatched = true;
+            var orig = window.navigateTo;
+            // Don't override, just poll
+        }
+        tryInitCharts();
+    }, 500);
+}
+
+// === Particle canvas for entry page ===
+(function() {
+    var canvas = document.getElementById('particleCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var W, H;
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (var i = 0; i < 60; i++) {
+        particles.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: Math.random() * 2 + 0.5,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            alpha: Math.random() * 0.4 + 0.1
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0) p.x = W;
+            if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H;
+            if (p.y > H) p.y = 0;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(212,168,66,' + p.alpha + ')';
+            ctx.fill();
+        }
+        // Draw connections
+        for (var i = 0; i < particles.length; i++) {
+            for (var j = i + 1; j < particles.length; j++) {
+                var dx = particles[i].x - particles[j].x;
+                var dy = particles[i].y - particles[j].y;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = 'rgba(212,168,66,' + (0.08 * (1 - dist / 120)) + ')';
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+
+// === Map route animation ===
+(function() {
+    var dots = document.querySelector('.map-route-dots');
+    if (!dots) return;
+    var offset = 0;
+    function animateDots() {
+        offset -= 0.5;
+        dots.setAttribute('stroke-dashoffset', offset);
+        requestAnimationFrame(animateDots);
+    }
+    animateDots();
+})();
+</script>
 </body>
 </html>

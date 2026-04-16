@@ -3,3 +3,6 @@
 *.swp
 *.swo
 node_modules/
+
+# Local Netlify folder
+.netlify
