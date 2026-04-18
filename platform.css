@@ -1135,6 +1135,14 @@ tr.highlight{background:rgba(212,168,66,0.04)!important}
 .cmd-p-status{margin-left:auto;font-size:10px;font-weight:600}
 .cmd-p-status.on{color:var(--green)}
 
+/* Vault list */
+.cmd-vault-list{display:flex;flex-direction:column;gap:4px}
+.cmd-vault{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:11px}
+.cmd-vault:last-child{border-bottom:none}
+.cmd-vault-name{display:flex;align-items:center;gap:5px;color:var(--txt2);min-width:100px}
+.cmd-vault-data{text-align:right}
+.cmd-vault-detail{display:block;font-size:9px;color:var(--txt3)}
+
 /* Footer */
 .cmd-footer{position:relative;z-index:10;display:flex;justify-content:space-between;padding:8px 24px;border-top:1px solid var(--border);font-size:10px;color:var(--txt3);background:rgba(6,10,20,0.6);flex-shrink:0}
 
