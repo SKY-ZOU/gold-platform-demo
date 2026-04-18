@@ -840,6 +840,30 @@ tr.highlight{background:rgba(212,168,66,0.04)!important}
 }
 
 /* ================================================================
+   32. FULL CHAIN TRACKING
+   ================================================================ */
+.track-node{display:flex;align-items:flex-start;gap:12px;position:relative}
+.track-dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;background:var(--bg3);border:2px solid var(--border);color:var(--txt3);position:relative;z-index:2}
+.track-dot.done{background:var(--green);border-color:var(--green);color:#fff;font-size:12px}
+.track-dot.active{background:var(--gold);border-color:var(--gold);color:#1a1400;animation:dotPulse 2s infinite}
+.track-info{padding:2px 0 14px}
+.track-title{font-size:13px;font-weight:600;margin-bottom:2px}
+.track-time{font-size:11px;color:var(--txt3)}
+.track-detail{font-size:11px;color:var(--txt2);margin-top:4px;line-height:1.7}
+.track-tag{margin-top:6px;display:flex;gap:4px;flex-wrap:wrap}
+.track-line{width:2px;height:12px;margin-left:12px;background:var(--border)}
+.track-line.done{background:var(--green)}
+.track-line.active{background:linear-gradient(to bottom,var(--gold),var(--border))}
+
+.video-feed{position:relative;border-radius:6px;overflow:hidden}
+.video-label{position:absolute;top:0;left:0;right:0;padding:6px 10px;font-size:10px;font-weight:600;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0.7),transparent);z-index:2}
+.video-placeholder{height:140px;background:linear-gradient(135deg,#0a1428,#101e38);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--txt3);position:relative;overflow:hidden}
+.video-placeholder.grey{background:linear-gradient(135deg,#12151e,#1a1e2a)}
+.video-time{font-size:9px;font-family:monospace;color:var(--txt3);opacity:0.6}
+.video-wave{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(34,211,238,0.02) 2px,rgba(34,211,238,0.02) 4px);animation:scanLine 4s linear infinite}
+@keyframes scanLine{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+
+/* ================================================================
    29. RESPONSIVE — TABLET
    ================================================================ */
 @media(max-width:1024px){
@@ -934,6 +958,12 @@ tr.highlight{background:rgba(212,168,66,0.04)!important}
   .chart-container{padding:12px}
   .chart-title{font-size:12px;margin-bottom:8px}
   .three-col{grid-template-columns:1fr!important;gap:12px}
+
+  /* --- Tracking --- */
+  #page-b-tracking > div:last-child,
+  #page-g-tracking > div:last-child { grid-template-columns: 1fr !important; }
+  .video-placeholder { height: 100px; }
+  .track-node { gap: 8px; }
 
   /* --- Map --- */
   .map-container{height:auto!important;min-height:200px}
