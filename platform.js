@@ -44,47 +44,42 @@ function initGlobe() {
   chart.setOption({
     backgroundColor: 'transparent',
     globe: {
-      baseColor: '#091428',
-      shading: 'color',
+      baseColor: '#000',
+      heightTexture: 'https://echarts.apache.org/examples/data-gl/asset/earth/bathymetry_bw_composite_4k.jpg',
+      displacementScale: 0.05,
+      environment: 'https://echarts.apache.org/examples/data-gl/asset/starfield.jpg',
+      shading: 'realistic',
+      realisticMaterial: { roughness: 0.9, metalness: 0 },
+      postEffect: {
+        enable: true,
+        bloom: { enable: true, intensity: 0.2 }
+      },
+      temporalSuperSampling: { enable: true },
       atmosphere: {
         show: true,
-        color: '#1a3a5c',
-        glowPower: 4,
-        innerGlowPower: 1
+        color: '#1a4a8a',
+        glowPower: 8,
+        innerGlowPower: 2
       },
       viewControl: {
         autoRotate: true,
-        autoRotateSpeed: 3,
-        distance: 220,
-        alpha: 15,
+        autoRotateSpeed: 2,
+        distance: 200,
+        alpha: 10,
         beta: 160,
-        minDistance: 150,
+        minDistance: 120,
         maxDistance: 400,
         damping: 0.9
       },
       light: {
-        ambient: { intensity: 0.6 },
-        main: { intensity: 0.8, shadow: false }
+        ambient: { intensity: 0 },
+        main: { intensity: 0, shadow: false }
       },
       layers: [{
         type: 'blend',
         blendTo: 'emission',
-        texture: 'data:image/svg+xml,' + encodeURIComponent(
-          '<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1024">' +
-          '<rect fill="#091428" width="2048" height="1024"/>' +
-          // Grid lines
-          Array.from({length:18},(_,i)=>`<line x1="0" y1="${i*57}" x2="2048" y2="${i*57}" stroke="rgba(100,180,255,0.04)" stroke-width="0.5"/>`).join('') +
-          Array.from({length:36},(_,i)=>`<line x1="${i*57}" y1="0" x2="${i*57}" y2="1024" stroke="rgba(100,180,255,0.04)" stroke-width="0.5"/>`).join('') +
-          // Continent shapes (more visible)
-          '<path d="M1100,280 Q1180,240 1280,260 Q1350,320 1320,400 Q1250,450 1180,430 Q1100,380 1080,320 Z" fill="rgba(100,180,255,0.1)" stroke="rgba(100,180,255,0.08)" stroke-width="1"/>' + // East Asia
-          '<path d="M1050,260 Q1100,240 1140,280 Q1120,340 1060,340 Q1020,310 1050,260 Z" fill="rgba(100,180,255,0.08)"/>' + // India/South Asia
-          '<path d="M920,250 Q980,220 1040,260 Q1050,320 1010,350 Q950,340 920,300 Z" fill="rgba(100,180,255,0.07)"/>' + // Middle East
-          '<path d="M860,320 Q920,300 950,360 Q940,460 900,520 Q840,500 820,430 Q830,360 860,320 Z" fill="rgba(100,180,255,0.08)" stroke="rgba(100,180,255,0.06)" stroke-width="1"/>' + // Africa
-          '<path d="M1280,360 Q1340,340 1380,380 Q1360,430 1300,440 Q1260,410 1280,360 Z" fill="rgba(100,180,255,0.07)"/>' + // SEA
-          '<path d="M650,200 Q780,170 900,210 Q930,270 880,310 Q790,330 700,300 Q640,260 650,200 Z" fill="rgba(100,180,255,0.06)"/>' + // Europe
-          '<path d="M1350,480 Q1420,460 1460,500 Q1440,540 1380,530 Q1340,510 1350,480 Z" fill="rgba(100,180,255,0.05)"/>' + // Australia
-          '</svg>'
-        )
+        texture: 'https://echarts.apache.org/examples/data-gl/asset/earth/night.jpg',
+        intensity: 2.5
       }]
     },
     series: [
