@@ -381,4 +381,33 @@ document.addEventListener('DOMContentLoaded', () => {
       changeEl.className = 'price-change down';
     }
   }, 5000);
+
+  // Command center clock
+  function updateClock() {
+    const el = document.getElementById('cmdTime');
+    if (!el) return;
+    const now = new Date();
+    const y = now.getFullYear(), m = String(now.getMonth()+1).padStart(2,'0'),
+          d = String(now.getDate()).padStart(2,'0'), h = String(now.getHours()).padStart(2,'0'),
+          mi = String(now.getMinutes()).padStart(2,'0'), s = String(now.getSeconds()).padStart(2,'0');
+    el.textContent = `${y}-${m}-${d} ${h}:${mi}:${s}`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // Command center mini chart
+  if (typeof echarts !== 'undefined' && document.getElementById('cmdMiniChart')) {
+    const mc = echarts.init(document.getElementById('cmdMiniChart'), 'dark');
+    const data = [2320,2340,2335,2348,2342,2350,2347,2352,2345,2349,2347,2351,2348];
+    mc.setOption({
+      backgroundColor:'transparent',
+      grid:{top:5,right:5,bottom:5,left:5},
+      xAxis:{show:false,data:data.map((_,i)=>i)},
+      yAxis:{show:false,min:2310,max:2360},
+      series:[{type:'line',data:data,smooth:true,symbol:'none',
+        lineStyle:{color:'#d4a842',width:1.5},
+        areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(212,168,66,0.2)'},{offset:1,color:'rgba(212,168,66,0)'}]}}}]
+    });
+    window.addEventListener('resize',()=>mc.resize());
+  }
 });

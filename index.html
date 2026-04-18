@@ -10,52 +10,171 @@
 </head>
 <body>
 
-<!-- ==================== 角色选择入口 ==================== -->
-<div id="roleSelect" class="role-select-overlay">
-    <canvas id="particleCanvas"></canvas>
-    <div class="role-select-content">
-        <div class="role-logo">
-            <svg viewBox="0 0 40 40" width="52" height="52">
-                <defs><linearGradient id="gd" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#FFD700"/>
-                </linearGradient></defs>
-                <polygon points="20,2 26,14 38,16 29,25 31,38 20,32 9,38 11,25 2,16 14,14" fill="url(#gd)" stroke="#B8860B" stroke-width="0.5"/>
-            </svg>
-        </div>
-        <h1>大湾区跨境黄金保税加工<br>智慧监管服务平台</h1>
-        <p class="role-subtitle">一平台 · 四中心 · 三节点 · 双端协同</p>
-        <div class="role-cards">
-            <div class="role-card" onclick="enterPlatform('business')">
-                <div class="rc-icon">🏢</div>
-                <h2>企业服务端</h2>
-                <p class="rc-label">To B · Business Portal</p>
-                <ul>
-                    <li>保税加工业务申请</li>
-                    <li>合同/手册备案管理</li>
-                    <li>加工进度跟踪</li>
-                    <li>通关申报与核销</li>
-                    <li>结算与金融服务</li>
-                </ul>
-                <div class="rc-users">适用：会员企业 · 加工厂 · 贸易商</div>
-                <button class="rc-btn business">进入企业端 →</button>
-            </div>
-            <div class="role-card" onclick="enterPlatform('gov')">
-                <div class="rc-icon">🏛️</div>
-                <h2>监管服务端</h2>
-                <p class="rc-label">To G · Government Portal</p>
-                <ul>
-                    <li>业务审批管理</li>
-                    <li>实时监管驾驶舱</li>
-                    <li>核销核查管理</li>
-                    <li>风控预警中心</li>
-                    <li>企业信用评级</li>
-                </ul>
-                <div class="rc-users">适用：海关 · 平台运营方 · 监管机构</div>
-                <button class="rc-btn gov">进入监管端 →</button>
-            </div>
-        </div>
-        <div class="role-footer">一带一路国际黄金集团 · Belt & Road International Gold Group Limited<br><span>DEMO v3.0 · 2026年4月</span></div>
+<!-- ==================== 金通指挥中心大屏入口 ==================== -->
+<div id="roleSelect" class="cmd-screen">
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- 顶部标题栏 -->
+  <div class="cmd-header">
+    <div class="cmd-header-left">
+      <svg viewBox="0 0 40 40" width="32" height="32"><defs><linearGradient id="gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#FFD700"/></linearGradient></defs><polygon points="20,2 26,14 38,16 29,25 31,38 20,32 9,38 11,25 2,16 14,14" fill="url(#gd)" stroke="#B8860B" stroke-width="0.5"/></svg>
+      <span class="cmd-brand">GoldPass<span class="cmd-cn">金通</span></span>
     </div>
+    <div class="cmd-title-center">
+      <h1>大湾区国际黄金综合服务中心</h1>
+      <div class="cmd-title-sub">Greater Bay Area International Gold Service Center · Command Dashboard</div>
+    </div>
+    <div class="cmd-header-right">
+      <span class="cmd-time" id="cmdTime">2026-04-17 10:32:05</span>
+      <span class="cmd-live"><span class="live-dot"></span>系统运行中</span>
+    </div>
+  </div>
+
+  <!-- 主体内容 -->
+  <div class="cmd-body">
+
+    <!-- 左列：实时经济数据 -->
+    <div class="cmd-col cmd-left">
+      <div class="cmd-panel">
+        <div class="cmd-panel-title"><span class="cmd-dot gold"></span>实时金价行情</div>
+        <div class="cmd-price-row">
+          <div class="cmd-price"><div class="cmd-price-label">LBMA伦敦金</div><div class="cmd-price-val" id="cmdLbma">$2,347.80</div><div class="cmd-price-chg up">+0.42%</div></div>
+          <div class="cmd-price"><div class="cmd-price-label">上海金交所Au99.99</div><div class="cmd-price-val">¥565.28</div><div class="cmd-price-chg up">+0.31%</div></div>
+          <div class="cmd-price"><div class="cmd-price-label">香港金银贸易场</div><div class="cmd-price-val">HK$21,850</div><div class="cmd-price-chg down">-0.12%</div></div>
+        </div>
+        <div id="cmdMiniChart" style="height:80px;margin-top:8px"></div>
+      </div>
+      <div class="cmd-panel">
+        <div class="cmd-panel-title"><span class="cmd-dot cyan"></span>平台运营实况</div>
+        <div class="cmd-stats">
+          <div class="cmd-stat"><div class="cmd-stat-val">2,847.5<small>kg</small></div><div class="cmd-stat-label">本月加工量</div></div>
+          <div class="cmd-stat"><div class="cmd-stat-val">156<small>单</small></div><div class="cmd-stat-label">通关批次</div></div>
+          <div class="cmd-stat"><div class="cmd-stat-val">99.2<small>%</small></div><div class="cmd-stat-label">合规率</div></div>
+          <div class="cmd-stat"><div class="cmd-stat-val">4<small>家</small></div><div class="cmd-stat-label">入驻企业</div></div>
+        </div>
+      </div>
+      <div class="cmd-panel">
+        <div class="cmd-panel-title"><span class="cmd-dot green"></span>政策与资质动态</div>
+        <div class="cmd-news">
+          <div class="cmd-news-item"><span class="cmd-news-tag policy">政策</span><span>财政部2025年第11号：投资性黄金交易税收优惠安排</span></div>
+          <div class="cmd-news-item"><span class="cmd-news-tag qualify">资质</span><span>众恒隆LBMA Good Delivery认证 — <b style="color:var(--green)">已通过</b></span></div>
+          <div class="cmd-news-item"><span class="cmd-news-tag policy">政策</span><span>《2025施政报告》：打造香港国际黄金交易中心</span></div>
+          <div class="cmd-news-item"><span class="cmd-news-tag alert">动态</span><span>港金标准认可申请 — <b style="color:var(--orange)">审核中 55%</b></span></div>
+          <div class="cmd-news-item"><span class="cmd-news-tag qualify">资质</span><span>海关白名单数据积累 — 已完成1/3闭环试点</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 中列：核心地图 + 入口按钮 -->
+    <div class="cmd-col cmd-center">
+      <!-- SVG地图 -->
+      <div class="cmd-map-wrap">
+        <svg viewBox="0 0 600 320" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="routeMain" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#d4a842"/><stop offset="50%" style="stop-color:#22d3ee"/><stop offset="100%" style="stop-color:#5b8def"/></linearGradient>
+            <filter id="glowMain"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(212,168,66,0.3)"/><stop offset="100%" style="stop-color:transparent"/></radialGradient>
+          </defs>
+          <!-- 大湾区轮廓（简化） -->
+          <path d="M50,280 Q100,250 150,260 Q200,220 250,200 Q300,180 350,190 Q400,160 450,170 Q500,140 550,160" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="40" stroke-linecap="round"/>
+          <!-- 路线 -->
+          <path d="M100,240 C180,240 180,130 300,130 L360,130 C400,130 420,200 480,200" fill="none" stroke="url(#routeMain)" stroke-width="2" opacity="0.2"/>
+          <path d="M100,240 C180,240 180,130 300,130 L360,130 C400,130 420,200 480,200" fill="none" stroke="url(#routeMain)" stroke-width="2" stroke-dasharray="8,6" opacity="0.6" class="map-route"/>
+          <!-- 香港 -->
+          <circle cx="100" cy="240" r="30" fill="url(#nodeGlow)"/>
+          <circle cx="100" cy="240" r="8" fill="#d4a842" filter="url(#glowMain)" class="map-node"/>
+          <text x="100" y="212" text-anchor="middle" fill="#d4a842" font-size="13" font-weight="700" font-family="'Noto Sans SC'">香港</text>
+          <text x="100" y="275" text-anchor="middle" fill="#8896ab" font-size="9" font-family="'Noto Sans SC'">交易·交割·结算</text>
+          <!-- 东莞 -->
+          <circle cx="300" cy="130" r="30" fill="url(#nodeGlow)"/>
+          <circle cx="300" cy="130" r="8" fill="#fbbf24" filter="url(#glowMain)" class="map-node"/>
+          <text x="300" y="102" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700" font-family="'Noto Sans SC'">东莞·众恒隆</text>
+          <text x="300" y="166" text-anchor="middle" fill="#8896ab" font-size="9" font-family="'Noto Sans SC'">保税精炼·加工</text>
+          <!-- 黄埔 -->
+          <circle cx="480" cy="200" r="30" fill="url(#nodeGlow)"/>
+          <circle cx="480" cy="200" r="8" fill="#5b8def" filter="url(#glowMain)" class="map-node"/>
+          <text x="480" y="172" text-anchor="middle" fill="#5b8def" font-size="13" font-weight="700" font-family="'Noto Sans SC'">黄埔海关</text>
+          <text x="480" y="236" text-anchor="middle" fill="#8896ab" font-size="9" font-family="'Noto Sans SC'">监管·核查</text>
+          <!-- 一带一路辐射线 -->
+          <line x1="100" y1="240" x2="30" y2="290" stroke="rgba(212,168,66,0.1)" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="20" y="304" fill="#556378" font-size="8" font-family="'Noto Sans SC'">→ 一带一路</text>
+          <!-- 动画粒子 -->
+          <circle r="4" fill="#d4a842" filter="url(#glowMain)" opacity="0.9"><animateMotion dur="5s" repeatCount="indefinite" path="M100,240 C180,240 180,130 300,130 L360,130 C400,130 420,200 480,200"/></circle>
+          <circle r="3" fill="#5b8def" filter="url(#glowMain)" opacity="0.7"><animateMotion dur="5s" repeatCount="indefinite" begin="2.5s" path="M480,200 C420,200 400,130 360,130 L300,130 C180,130 180,240 100,240"/></circle>
+        </svg>
+      </div>
+
+      <!-- 系统入口按钮 -->
+      <div class="cmd-entry-grid">
+        <div class="cmd-entry" onclick="enterPlatform('business')">
+          <div class="cmd-entry-icon" style="background:linear-gradient(135deg,rgba(212,168,66,0.15),rgba(212,168,66,0.05));border-color:rgba(212,168,66,0.3)">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#d4a842" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><rect x="7" y="7" width="4" height="4" rx="1"/><rect x="13" y="7" width="4" height="4" rx="1"/><rect x="7" y="13" width="4" height="4" rx="1"/><rect x="13" y="13" width="4" height="4" rx="1"/></svg>
+          </div>
+          <div class="cmd-entry-name">企业服务</div>
+          <div class="cmd-entry-sub">业务申请 · 加工跟踪 · 结算</div>
+        </div>
+        <div class="cmd-entry" onclick="enterPlatform('gov')">
+          <div class="cmd-entry-icon" style="background:linear-gradient(135deg,rgba(91,141,239,0.15),rgba(91,141,239,0.05));border-color:rgba(91,141,239,0.3)">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#5b8def" stroke-width="1.5"><path d="M12 2L3 7v2h18V7L12 2z"/><rect x="4" y="11" width="3" height="8"/><rect x="10" y="11" width="3" height="8"/><rect x="16" y="11" width="3" height="8"/><rect x="2" y="20" width="19" height="2" rx="1"/></svg>
+          </div>
+          <div class="cmd-entry-name">监管服务</div>
+          <div class="cmd-entry-sub">审批 · 监管驾驶舱 · 风控</div>
+        </div>
+        <div class="cmd-entry" onclick="enterPlatform('business');setTimeout(()=>navigateToPage('b-tracking'),200)">
+          <div class="cmd-entry-icon" style="background:linear-gradient(135deg,rgba(34,211,238,0.15),rgba(34,211,238,0.05));border-color:rgba(34,211,238,0.3)">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22d3ee" stroke-width="1.5"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><line x1="7" y1="12" x2="17" y2="12" stroke-dasharray="2,2"/><circle cx="12" cy="12" r="1" fill="#22d3ee"/><path d="M12 5v3M12 16v3" opacity="0.4"/></svg>
+          </div>
+          <div class="cmd-entry-name">全链路追踪</div>
+          <div class="cmd-entry-sub">GPS · IoT · 视频 · 全流程</div>
+        </div>
+        <div class="cmd-entry" onclick="enterPlatform('gov');setTimeout(()=>navigateToPage('g-dashboard'),200)">
+          <div class="cmd-entry-icon" style="background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(251,191,36,0.05));border-color:rgba(251,191,36,0.3)">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fbbf24" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="6,10 10,7 14,11 18,6"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="8" y1="17" x2="8" y2="20"/><line x1="16" y1="17" x2="16" y2="20"/></svg>
+          </div>
+          <div class="cmd-entry-name">数据驾驶舱</div>
+          <div class="cmd-entry-sub">图表 · 大屏 · 实时分析</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右列：监控与预警 -->
+    <div class="cmd-col cmd-right">
+      <div class="cmd-panel">
+        <div class="cmd-panel-title"><span class="cmd-dot red"></span>实时监控<span class="live-badge" style="margin-left:8px">LIVE</span></div>
+        <div class="cmd-monitor">
+          <div class="cmd-m-row"><span class="status transit">在途</span><span class="mono" style="font-size:11px">GBP-0092</span><span style="font-size:11px">香港→东莞</span><span class="gold" style="font-size:11px">150 kg</span></div>
+          <div class="cmd-m-row"><span class="status processing">加工</span><span class="mono" style="font-size:11px">GBP-0091</span><span style="font-size:11px">精炼车间</span><span class="gold" style="font-size:11px">200 kg</span></div>
+          <div class="cmd-m-row"><span class="status testing">检测</span><span class="mono" style="font-size:11px">GBP-0089</span><span style="font-size:11px">品质检测</span><span class="gold" style="font-size:11px">180 kg</span></div>
+          <div class="cmd-m-row"><span class="status done">完成</span><span class="mono" style="font-size:11px">GBP-0087</span><span style="font-size:11px">已交割</span><span class="gold" style="font-size:11px">150 kg</span></div>
+        </div>
+      </div>
+      <div class="cmd-panel">
+        <div class="cmd-panel-title"><span class="cmd-dot orange"></span>风控预警</div>
+        <div class="cmd-alerts">
+          <div class="cmd-alert warn"><div class="cmd-alert-lv">中</div><div><div style="font-size:12px;font-weight:600">损耗率偏高</div><div style="font-size:10px;color:var(--txt3)">GBP-0091 0.48% 逼近阈值</div></div></div>
+          <div class="cmd-alert info"><div class="cmd-alert-lv low">低</div><div><div style="font-size:12px;font-weight:600">库存容量</div><div style="font-size:10px;color:var(--txt3)">A区仓库已达85%</div></div></div>
+          <div class="cmd-alert info"><div class="cmd-alert-lv low">低</div><div><div style="font-size:12px;font-weight:600">核销到期</div><div style="font-size:10px;color:var(--txt3)">3份合同7日内到期</div></div></div>
+        </div>
+      </div>
+      <div class="cmd-panel">
+        <div class="cmd-panel-title"><span class="cmd-dot purple"></span>参与方状态</div>
+        <div class="cmd-partners">
+          <div class="cmd-partner"><span style="color:var(--gold)">●</span><span>张氏黄金</span><span class="cmd-p-status on">在线</span></div>
+          <div class="cmd-partner"><span style="color:var(--gold)">●</span><span>少龙国际</span><span class="cmd-p-status on">在线</span></div>
+          <div class="cmd-partner"><span style="color:var(--orange)">●</span><span>众恒隆炼厂</span><span class="cmd-p-status on">生产中</span></div>
+          <div class="cmd-partner"><span style="color:var(--purple)">●</span><span>天地纵横</span><span class="cmd-p-status on">在线</span></div>
+          <div class="cmd-partner"><span style="color:var(--cyan)">●</span><span>黄埔海关</span><span class="cmd-p-status on">系统对接</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部信息栏 -->
+  <div class="cmd-footer">
+    <span>一带一路国际黄金集团 · Belt & Road International Gold Group Limited</span>
+    <span>GoldPass 金通 v3.2</span>
+    <span>粤港澳大湾区 · 深港跨境黄金保税加工监管服务平台</span>
+  </div>
 </div>
 
 <!-- ==================== 主平台框架 ==================== -->
