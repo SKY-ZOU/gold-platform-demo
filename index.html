@@ -6,7 +6,8 @@
     <title>大湾区跨境黄金保税加工智慧监管服务平台</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="platform.css">
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
 </head>
 <body>
 
@@ -68,85 +69,7 @@
     <!-- 中列：全球金库网络地图 + 入口 -->
     <div class="cmd-col cmd-center">
       <div class="cmd-map-wrap">
-        <svg viewBox="0 0 720 360" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <linearGradient id="routeMain" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#d4a842"/><stop offset="50%" style="stop-color:#22d3ee"/><stop offset="100%" style="stop-color:#5b8def"/></linearGradient>
-            <filter id="glowMain"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(212,168,66,0.25)"/><stop offset="100%" style="stop-color:transparent"/></radialGradient>
-          </defs>
-
-          <!-- 世界地图极简轮廓（背景暗线） -->
-          <ellipse cx="360" cy="180" rx="340" ry="160" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-          <ellipse cx="360" cy="180" rx="240" ry="110" fill="none" stroke="rgba(255,255,255,0.015)" stroke-width="1"/>
-
-          <!-- ===== 一带一路合作仓 ===== -->
-          <!-- 肯尼亚·内罗毕 -->
-          <line x1="420" y1="195" x2="280" y2="235" stroke="rgba(168,85,250,0.15)" stroke-width="1" stroke-dasharray="4,4"><animate attributeName="stroke-dashoffset" from="0" to="-16" dur="3s" repeatCount="indefinite"/></line>
-          <circle cx="280" cy="235" r="16" fill="rgba(168,85,250,0.06)"/>
-          <circle cx="280" cy="235" r="4" fill="#a855f7" filter="url(#glowMain)"/>
-          <text x="280" y="220" text-anchor="middle" fill="#a855f7" font-size="9" font-weight="600" font-family="'Noto Sans SC'">肯尼亚·内罗毕</text>
-          <text x="280" y="256" text-anchor="middle" fill="#556378" font-size="7.5" font-family="'Noto Sans SC'">合作仓 | 库存 45kg</text>
-          <text x="280" y="267" text-anchor="middle" fill="#556378" font-size="7" font-family="'Noto Sans SC'">进料: 伦敦金/港金</text>
-
-          <!-- 阿联酋·迪拜 -->
-          <line x1="420" y1="195" x2="350" y2="160" stroke="rgba(251,191,36,0.15)" stroke-width="1" stroke-dasharray="4,4"><animate attributeName="stroke-dashoffset" from="0" to="-16" dur="3s" repeatCount="indefinite"/></line>
-          <circle cx="350" cy="160" r="16" fill="rgba(251,191,36,0.06)"/>
-          <circle cx="350" cy="160" r="4" fill="#fbbf24" filter="url(#glowMain)"/>
-          <text x="350" y="144" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600" font-family="'Noto Sans SC'">阿联酋·迪拜</text>
-          <text x="350" y="182" text-anchor="middle" fill="#556378" font-size="7.5" font-family="'Noto Sans SC'">DMCC仓 | 库存 120kg</text>
-          <text x="350" y="193" text-anchor="middle" fill="#556378" font-size="7" font-family="'Noto Sans SC'">进料: 伦敦金</text>
-
-          <!-- 马来西亚·吉隆坡 -->
-          <line x1="500" y1="210" x2="560" y2="250" stroke="rgba(34,211,153,0.15)" stroke-width="1" stroke-dasharray="4,4"><animate attributeName="stroke-dashoffset" from="0" to="-16" dur="3s" repeatCount="indefinite"/></line>
-          <circle cx="560" cy="250" r="16" fill="rgba(34,211,153,0.06)"/>
-          <circle cx="560" cy="250" r="4" fill="#34d399" filter="url(#glowMain)"/>
-          <text x="560" y="234" text-anchor="middle" fill="#34d399" font-size="9" font-weight="600" font-family="'Noto Sans SC'">马来西亚·吉隆坡</text>
-          <text x="560" y="272" text-anchor="middle" fill="#556378" font-size="7.5" font-family="'Noto Sans SC'">合作仓 | 库存 68kg</text>
-          <text x="560" y="283" text-anchor="middle" fill="#556378" font-size="7" font-family="'Noto Sans SC'">进料: 港金9999</text>
-
-          <!-- ===== 核心网络：香港-东莞-黄埔 ===== -->
-          <!-- 主路线 -->
-          <path d="M420,210 C460,210 460,140 500,140 L540,140 C560,140 570,175 600,175" fill="none" stroke="url(#routeMain)" stroke-width="2.5" opacity="0.2"/>
-          <path d="M420,210 C460,210 460,140 500,140 L540,140 C560,140 570,175 600,175" fill="none" stroke="url(#routeMain)" stroke-width="2.5" stroke-dasharray="8,6" opacity="0.7" class="map-route"/>
-
-          <!-- 香港（含机场金库） -->
-          <circle cx="420" cy="210" r="24" fill="url(#nodeGlow)"/>
-          <circle cx="420" cy="210" r="9" fill="#d4a842" filter="url(#glowMain)" class="map-node"/>
-          <text x="420" y="195" text-anchor="middle" fill="#d4a842" font-size="12" font-weight="700" font-family="'Noto Sans SC'">香 港</text>
-          <text x="420" y="242" text-anchor="middle" fill="#8896ab" font-size="8" font-family="'Noto Sans SC'">交易·交割·结算</text>
-          <!-- 香港机场金库标注 -->
-          <rect x="430" y="215" width="6" height="6" rx="1" fill="rgba(212,168,66,0.4)" stroke="#d4a842" stroke-width="0.5"/>
-          <text x="441" y="222" fill="#d4a842" font-size="7" font-family="'Noto Sans SC'" opacity="0.8">机场金库</text>
-          <text x="441" y="231" fill="#556378" font-size="6.5" font-family="'Noto Sans SC'">流动性 280kg</text>
-          <text x="441" y="239" fill="#556378" font-size="6.5" font-family="'Noto Sans SC'">托管 1,520kg</text>
-
-          <!-- 东莞·众恒隆 -->
-          <circle cx="510" cy="140" r="22" fill="url(#nodeGlow)"/>
-          <circle cx="510" cy="140" r="8" fill="#fbbf24" filter="url(#glowMain)" class="map-node"/>
-          <text x="510" y="120" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700" font-family="'Noto Sans SC'">东莞·众恒隆</text>
-          <text x="510" y="166" text-anchor="middle" fill="#8896ab" font-size="8" font-family="'Noto Sans SC'">保税精炼 3吨/日</text>
-
-          <!-- 黄埔海关 -->
-          <circle cx="610" cy="175" r="18" fill="rgba(91,141,239,0.08)"/>
-          <circle cx="610" cy="175" r="6" fill="#5b8def" filter="url(#glowMain)" class="map-node"/>
-          <text x="610" y="160" text-anchor="middle" fill="#5b8def" font-size="10" font-weight="600" font-family="'Noto Sans SC'">黄埔海关</text>
-          <text x="610" y="198" text-anchor="middle" fill="#8896ab" font-size="7.5" font-family="'Noto Sans SC'">监管·核查</text>
-
-          <!-- 动画粒子：核心路线 -->
-          <circle r="4" fill="#d4a842" filter="url(#glowMain)" opacity="0.9"><animateMotion dur="4s" repeatCount="indefinite" path="M420,210 C460,210 460,140 500,140 L540,140 C560,140 570,175 600,175"/></circle>
-          <circle r="3" fill="#5b8def" filter="url(#glowMain)" opacity="0.7"><animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M600,175 C570,175 560,140 540,140 L500,140 C460,140 460,210 420,210"/></circle>
-          <!-- 动画粒子：一带一路辐射 -->
-          <circle r="2.5" fill="#a855f7" opacity="0.6"><animateMotion dur="6s" repeatCount="indefinite" path="M420,210 L280,235"/></circle>
-          <circle r="2.5" fill="#fbbf24" opacity="0.5"><animateMotion dur="5s" repeatCount="indefinite" begin="1s" path="M420,210 L350,160"/></circle>
-          <circle r="2.5" fill="#34d399" opacity="0.5"><animateMotion dur="5.5s" repeatCount="indefinite" begin="2s" path="M500,210 L560,250"/></circle>
-
-          <!-- 图例 -->
-          <g transform="translate(20,310)">
-            <circle cx="0" cy="0" r="3" fill="#d4a842"/><text x="8" y="3" fill="#556378" font-size="7">核心节点</text>
-            <circle cx="70" cy="0" r="3" fill="#a855f7"/><text x="78" y="3" fill="#556378" font-size="7">合作仓</text>
-            <rect x="130" y="-3" width="5" height="5" rx="1" fill="rgba(212,168,66,0.4)"/><text x="140" y="3" fill="#556378" font-size="7">金库</text>
-          </g>
-        </svg>
+        <div id="globeChart" style="width:100%;height:100%"></div>
       </div>
 
       <!-- 系统入口按钮 -->
@@ -218,7 +141,7 @@
   <!-- 底部信息栏 -->
   <div class="cmd-footer">
     <span>一带一路国际黄金集团 · Belt & Road International Gold Group Limited</span>
-    <span>GoldPass 金通 v3.4</span>
+    <span>GoldPass 金通 v4.0</span>
     <span>粤港澳大湾区 · 深港跨境黄金保税加工监管服务平台</span>
   </div>
 </div>

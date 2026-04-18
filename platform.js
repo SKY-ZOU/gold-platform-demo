@@ -1,10 +1,167 @@
 // ============================================
-// 大湾区跨境黄金保税加工智慧监管服务平台 v3.0
-// To B + To G 双端协同演示
-// ECharts + 粒子系统 + 数字动画 + 增强交互
+// GoldPass 金通 v4.0
+// 3D地球 + ECharts GL + 粒子系统
 // ============================================
 
 let currentPortal = 'business'; // 'business' | 'gov'
+
+// ========== 3D地球 ==========
+function initGlobe() {
+  const el = document.getElementById('globeChart');
+  if (!el || typeof echarts === 'undefined' || !echarts.getMap) {
+    // echarts-gl not loaded yet, retry
+    setTimeout(initGlobe, 500);
+    return;
+  }
+  if (el.dataset.inited) return;
+  el.dataset.inited = '1';
+
+  const chart = echarts.init(el);
+
+  // 节点数据 [lng, lat, name, inventory, color, type]
+  const nodes = [
+    [114.17, 22.32, '香港 · 1,800kg', '机场金库', '#d4a842', 22],
+    [113.75, 23.05, '东莞·众恒隆', '精炼3吨/日', '#fbbf24', 14],
+    [113.48, 23.10, '黄埔海关', '监管', '#5b8def', 12],
+    [55.27, 25.20, '迪拜DMCC · 120kg', '合作仓', '#fbbf24', 14],
+    [36.82, -1.29, '内罗毕 · 45kg', '合作仓', '#a855f7', 12],
+    [101.69, 3.14, '吉隆坡 · 68kg', '合作仓', '#34d399', 12]
+  ];
+
+  // 飞线数据 [[fromLng,fromLat], [toLng,toLat]]
+  const routes = [
+    { coords: [[114.17,22.32],[113.75,23.05]], color: '#d4a842' },
+    { coords: [[113.75,23.05],[113.48,23.10]], color: '#5b8def' },
+    { coords: [[114.17,22.32],[55.27,25.20]], color: '#fbbf24' },
+    { coords: [[114.17,22.32],[36.82,-1.29]], color: '#a855f7' },
+    { coords: [[114.17,22.32],[101.69,3.14]], color: '#34d399' },
+    // return lines (dimmer)
+    { coords: [[55.27,25.20],[114.17,22.32]], color: 'rgba(251,191,36,0.3)' },
+    { coords: [[36.82,-1.29],[114.17,22.32]], color: 'rgba(168,85,247,0.3)' },
+    { coords: [[101.69,3.14],[114.17,22.32]], color: 'rgba(52,211,153,0.3)' },
+  ];
+
+  chart.setOption({
+    backgroundColor: 'transparent',
+    globe: {
+      baseColor: '#091428',
+      shading: 'color',
+      atmosphere: {
+        show: true,
+        color: '#1a3a5c',
+        glowPower: 4,
+        innerGlowPower: 1
+      },
+      viewControl: {
+        autoRotate: true,
+        autoRotateSpeed: 3,
+        distance: 220,
+        alpha: 15,
+        beta: 160,
+        minDistance: 150,
+        maxDistance: 400,
+        damping: 0.9
+      },
+      light: {
+        ambient: { intensity: 0.6 },
+        main: { intensity: 0.8, shadow: false }
+      },
+      layers: [{
+        type: 'blend',
+        blendTo: 'emission',
+        texture: 'data:image/svg+xml,' + encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1024">' +
+          '<rect fill="#091428" width="2048" height="1024"/>' +
+          // Grid lines
+          Array.from({length:18},(_,i)=>`<line x1="0" y1="${i*57}" x2="2048" y2="${i*57}" stroke="rgba(100,180,255,0.04)" stroke-width="0.5"/>`).join('') +
+          Array.from({length:36},(_,i)=>`<line x1="${i*57}" y1="0" x2="${i*57}" y2="1024" stroke="rgba(100,180,255,0.04)" stroke-width="0.5"/>`).join('') +
+          // Continent shapes (more visible)
+          '<path d="M1100,280 Q1180,240 1280,260 Q1350,320 1320,400 Q1250,450 1180,430 Q1100,380 1080,320 Z" fill="rgba(100,180,255,0.1)" stroke="rgba(100,180,255,0.08)" stroke-width="1"/>' + // East Asia
+          '<path d="M1050,260 Q1100,240 1140,280 Q1120,340 1060,340 Q1020,310 1050,260 Z" fill="rgba(100,180,255,0.08)"/>' + // India/South Asia
+          '<path d="M920,250 Q980,220 1040,260 Q1050,320 1010,350 Q950,340 920,300 Z" fill="rgba(100,180,255,0.07)"/>' + // Middle East
+          '<path d="M860,320 Q920,300 950,360 Q940,460 900,520 Q840,500 820,430 Q830,360 860,320 Z" fill="rgba(100,180,255,0.08)" stroke="rgba(100,180,255,0.06)" stroke-width="1"/>' + // Africa
+          '<path d="M1280,360 Q1340,340 1380,380 Q1360,430 1300,440 Q1260,410 1280,360 Z" fill="rgba(100,180,255,0.07)"/>' + // SEA
+          '<path d="M650,200 Q780,170 900,210 Q930,270 880,310 Q790,330 700,300 Q640,260 650,200 Z" fill="rgba(100,180,255,0.06)"/>' + // Europe
+          '<path d="M1350,480 Q1420,460 1460,500 Q1440,540 1380,530 Q1340,510 1350,480 Z" fill="rgba(100,180,255,0.05)"/>' + // Australia
+          '</svg>'
+        )
+      }]
+    },
+    series: [
+      // Flying lines with particle effect
+      {
+        type: 'lines3D',
+        coordinateSystem: 'globe',
+        blendMode: 'lighter',
+        lineStyle: {
+          width: 2,
+          opacity: 0.8
+        },
+        effect: {
+          show: true,
+          period: 3,
+          trailLength: 0.4,
+          trailWidth: 4,
+          trailOpacity: 1
+        },
+        data: routes.map(r => ({
+          coords: r.coords,
+          lineStyle: { color: r.color },
+          effect: { color: r.color }
+        }))
+      },
+      // Scatter points for nodes
+      {
+        type: 'scatter3D',
+        coordinateSystem: 'globe',
+        blendMode: 'lighter',
+        symbolSize: function(val) { return val[2]; },
+        itemStyle: {
+          opacity: 1
+        },
+        label: {
+          show: true,
+          position: 'top',
+          formatter: function(p) { return p.data.name; },
+          textStyle: {
+            color: '#e2e8f0',
+            fontSize: 10,
+            fontWeight: 600,
+            fontFamily: "'Noto Sans SC', sans-serif",
+            backgroundColor: 'rgba(6,10,20,0.7)',
+            padding: [3, 8],
+            borderRadius: 4,
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 1
+          }
+        },
+        data: nodes.map(n => ({
+          value: [n[0], n[1], n[5]],
+          name: n[2],
+          label: { show: true },
+          itemStyle: { color: n[4] }
+        }))
+      },
+      // Halo rings around Hong Kong (core hub)
+      {
+        type: 'scatter3D',
+        coordinateSystem: 'globe',
+        blendMode: 'lighter',
+        symbol: 'circle',
+        symbolSize: 45,
+        itemStyle: {
+          color: 'rgba(212,168,66,0.2)',
+          opacity: 0.8
+        },
+        label: { show: false },
+        data: [[114.17, 22.32, 0]]
+      }
+    ]
+  });
+
+  window.addEventListener('resize', () => chart.resize());
+  window._globeChart = chart;
+}
 
 // ========== 粒子系统 ==========
 function initParticles() {
@@ -349,6 +506,7 @@ function animateGoldPrice(el, from, to, duration) {
 // ========== 初始化 ==========
 document.addEventListener('DOMContentLoaded', () => {
   initParticles();
+  initGlobe();
 
   // 类型选择交互
   document.addEventListener('click', e => {
