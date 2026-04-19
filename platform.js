@@ -45,9 +45,9 @@ function initGlobe() {
     backgroundColor: 'transparent',
     globe: {
       baseColor: '#000',
-      heightTexture: 'https://echarts.apache.org/examples/data-gl/asset/earth/bathymetry_bw_composite_4k.jpg',
+      heightTexture: 'assets/world-topo.jpg',
       displacementScale: 0.05,
-      environment: 'https://echarts.apache.org/examples/data-gl/asset/starfield.jpg',
+      environment: 'assets/starfield.jpg',
       shading: 'realistic',
       realisticMaterial: { roughness: 0.9, metalness: 0 },
       postEffect: {
@@ -78,7 +78,7 @@ function initGlobe() {
       layers: [{
         type: 'blend',
         blendTo: 'emission',
-        texture: 'https://echarts.apache.org/examples/data-gl/asset/earth/night.jpg',
+        texture: 'assets/night.jpg',
         intensity: 2.5
       }]
     },
