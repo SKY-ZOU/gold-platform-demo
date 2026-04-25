@@ -20,18 +20,21 @@ function initGlobe() {
 
   // 节点数据 [lng, lat, name, inventory, color, type]
   const nodes = [
-    [114.17, 22.32, '香港 · 1,800kg', '机场金库', '#d4a842', 22],
-    [113.75, 23.05, '东莞·众恒隆', '精炼3吨/日', '#fbbf24', 14],
-    [113.48, 23.10, '黄埔海关', '监管', '#5b8def', 12],
+    [114.17, 22.32, '香港 · 1,800kg', '机场金库·张氏黄金', '#d4a842', 22],
+    [114.13, 22.55, '莲塘口岸', '深圳海关', '#22d3ee', 11],
+    [114.05, 22.83, '凤岗海关', '黄埔海关下属', '#5b8def', 11],
+    [113.75, 23.05, '东莞·绍隆实业', '众恒隆集团子公司·精炼3吨/日', '#fbbf24', 14],
     [55.27, 25.20, '迪拜DMCC · 120kg', '合作仓', '#fbbf24', 14],
     [36.82, -1.29, '内罗毕 · 45kg', '合作仓', '#a855f7', 12],
     [101.69, 3.14, '吉隆坡 · 68kg', '合作仓', '#34d399', 12]
   ];
 
   // 飞线数据 [[fromLng,fromLat], [toLng,toLat]]
+  // 主路线：电子锁试点（香港→莲塘→凤岗→东莞绍隆）
   const routes = [
-    { coords: [[114.17,22.32],[113.75,23.05]], color: '#d4a842' },
-    { coords: [[113.75,23.05],[113.48,23.10]], color: '#5b8def' },
+    { coords: [[114.17,22.32],[114.13,22.55]], color: '#d4a842' },
+    { coords: [[114.13,22.55],[114.05,22.83]], color: '#22d3ee' },
+    { coords: [[114.05,22.83],[113.75,23.05]], color: '#5b8def' },
     { coords: [[114.17,22.32],[55.27,25.20]], color: '#fbbf24' },
     { coords: [[114.17,22.32],[36.82,-1.29]], color: '#a855f7' },
     { coords: [[114.17,22.32],[101.69,3.14]], color: '#34d399' },
@@ -386,7 +389,7 @@ function enterPlatform(role) {
     badge.textContent = '监管端 To G';
     badge.className = 'topbar-portal gov';
     avatar.textContent = '海';
-    name.textContent = '黄埔海关监管员';
+    name.textContent = '凤岗海关 · 监管员';
     document.getElementById('menuBusiness').classList.add('hidden');
     document.getElementById('menuGov').classList.remove('hidden');
     showPage('g-dashboard');

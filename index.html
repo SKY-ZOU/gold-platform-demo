@@ -59,7 +59,7 @@
         <div class="cmd-panel-title"><span class="cmd-dot green"></span>政策与资质</div>
         <div class="cmd-news">
           <div class="cmd-news-item"><span class="cmd-news-tag policy">政策</span><span>财政部2025年第11号：投资性黄金交易税收优惠</span></div>
-          <div class="cmd-news-item"><span class="cmd-news-tag qualify">资质</span><span>众恒隆LBMA认证 — <b style="color:var(--green)">已通过</b></span></div>
+          <div class="cmd-news-item"><span class="cmd-news-tag qualify">资质</span><span>绍隆实业LBMA认证 — <b style="color:var(--green)">已通过</b></span></div>
           <div class="cmd-news-item"><span class="cmd-news-tag policy">政策</span><span>施政报告：打造香港国际黄金交易中心</span></div>
           <div class="cmd-news-item"><span class="cmd-news-tag alert">动态</span><span>港金标准认可 — <b style="color:var(--orange)">审核中</b></span></div>
         </div>
@@ -197,7 +197,7 @@
     <a class="menu-item" data-page="g-tracking" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><circle cx="4" cy="10" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="10" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="10" x2="14" y2="10" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2"/><circle cx="10" cy="10" r="1" fill="currentColor"/></svg></span>全流程追踪<span class="mi-badge">实时</span></a></div>
             <div class="menu-group"><div class="menu-group-title">数据中心</div>
                 <a class="menu-item" data-page="g-stats" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><polyline points="2,16 6,8 10,12 14,4 18,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="8" r="1.5" fill="currentColor"/><circle cx="10" cy="12" r="1.5" fill="currentColor"/><circle cx="14" cy="4" r="1.5" fill="currentColor"/></svg></span>统计分析</a>
-                <a class="menu-item" data-page="g-exchange" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 7h10l-3-3M16 13H6l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>双关数据交换</a></div>
+                <a class="menu-item" data-page="g-exchange" onclick="navigateTo(this)"><span class="mi-icon"><svg class="mi-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 7h10l-3-3M16 13H6l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>三关数据交换</a></div>
         </nav>
     </aside>
 
@@ -219,11 +219,12 @@
                 <div class="kpi-card"><div class="kpi-val">99.2%</div><div class="kpi-label">合规率</div><div class="kpi-sub up">↑ 0.3%</div><svg class="sparkline" viewBox="0 0 80 24"><polyline points="0,18 10,16 20,14 30,12 40,10 50,8 60,6 70,4 80,4" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/></svg></div>
             </div>
             <div class="card"><div class="card-header"><h3>最近业务</h3><a class="link">查看全部 →</a></div>
-                <table class="data-table"><thead><tr><th>业务编号</th><th>类型</th><th>原料量</th><th>状态</th><th>提交日期</th><th>操作</th></tr></thead><tbody>
-                    <tr><td class="mono">GBP-2026-0092</td><td><span class="tag blue">来料</span></td><td>150.00 kg</td><td><span class="status processing">加工中</span></td><td>04-12</td><td><a class="link" onclick="navigateToPage('b-processing')">跟踪</a></td></tr>
-                    <tr><td class="mono">GBP-2026-0091</td><td><span class="tag purple">进料</span></td><td>200.00 kg</td><td><span class="status pending">待审批</span></td><td>04-11</td><td><a class="link">查看</a></td></tr>
-                    <tr><td class="mono">GBP-2026-0089</td><td><span class="tag blue">来料</span></td><td>125.50 kg</td><td><span class="status testing">检测中</span></td><td>04-09</td><td><a class="link">查看</a></td></tr>
-                    <tr><td class="mono">GBP-2026-0087</td><td><span class="tag blue">来料</span></td><td>180.00 kg</td><td><span class="status done">已完成</span></td><td>04-05</td><td><a class="link">查看</a></td></tr>
+                <table class="data-table"><thead><tr><th>业务编号</th><th>类型</th><th>通关模式</th><th>原料量</th><th>状态</th><th>提交日期</th><th>操作</th></tr></thead><tbody>
+                    <tr style="background:rgba(212,168,66,0.08);border-left:3px solid var(--gold)"><td class="mono">GBP-2026-PILOT01 <span class="tag" style="font-size:9px;background:var(--gold-glow);color:var(--gold);margin-left:4px">★首批试点</span></td><td><span class="tag blue">来料</span></td><td><span class="tag green">电子锁</span></td><td class="gold">5.00 kg</td><td><span class="status processing">海关协调中</span></td><td>04-19</td><td><a class="link" onclick="navigateToPage('b-tracking')">跟踪</a></td></tr>
+                    <tr><td class="mono">GBP-2026-0092</td><td><span class="tag blue">来料</span></td><td><span class="tag green">电子锁</span></td><td>150.00 kg</td><td><span class="status processing">加工中</span></td><td>04-12</td><td><a class="link" onclick="navigateToPage('b-processing')">跟踪</a></td></tr>
+                    <tr><td class="mono">GBP-2026-0091</td><td><span class="tag purple">进料</span></td><td><span class="tag green">电子锁</span></td><td>200.00 kg</td><td><span class="status pending">待审批</span></td><td>04-11</td><td><a class="link">查看</a></td></tr>
+                    <tr><td class="mono">GBP-2026-0089</td><td><span class="tag blue">来料</span></td><td><span class="tag orange">跨境一锁</span></td><td>125.50 kg</td><td><span class="status testing">检测中</span></td><td>04-09</td><td><a class="link">查看</a></td></tr>
+                    <tr><td class="mono">GBP-2026-0087</td><td><span class="tag blue">来料</span></td><td><span class="tag green">电子锁</span></td><td>180.00 kg</td><td><span class="status done">已完成</span></td><td>04-05</td><td><a class="link">查看</a></td></tr>
                 </tbody></table>
             </div>
         </div>
@@ -252,7 +253,7 @@
                         <div class="form-group"><label>预估重量 (kg) <span class="req">*</span></label><input type="number" value="150.00"></div>
                         <div class="form-group"><label>原料纯度</label><input type="text" value="95.5%"></div>
                         <div class="form-group"><label>目标纯度 <span class="req">*</span></label><select><option>99.99% (四个九)</option><option>99.9%</option></select></div>
-                        <div class="form-group"><label>加工工厂 <span class="req">*</span></label><select><option>众恒隆·东莞精炼厂</option></select></div>
+                        <div class="form-group"><label>加工工厂 <span class="req">*</span></label><select><option>众恒隆集团·东莞绍隆实业</option></select></div>
                         <div class="form-group"><label>预计交货</label><input type="date" value="2026-05-15"></div>
                         <div class="form-group full"><label>备注</label><textarea rows="2">成品需符合香港金标准，规格1kg/条</textarea></div>
                     </div>
@@ -278,7 +279,7 @@
             <div class="card"><div class="card-header"><h3>批次 GBP-2026-0092</h3><span class="status processing">加工中</span></div>
                 <div class="process-timeline">
                     <div class="pt-step done"><div class="pt-dot">✓</div><div class="pt-info"><div class="pt-title">委托接收</div><div class="pt-time">04-12 09:30</div></div></div><div class="pt-line done"></div>
-                    <div class="pt-step done"><div class="pt-dot">✓</div><div class="pt-info"><div class="pt-title">保税入境</div><div class="pt-time">04-12 14:20</div><div class="pt-detail">黄埔海关已核放</div></div></div><div class="pt-line done"></div>
+                    <div class="pt-step done"><div class="pt-dot">✓</div><div class="pt-info"><div class="pt-title">保税入境</div><div class="pt-time">04-12 14:20</div><div class="pt-detail">凤岗海关已核放（黄埔下属）</div></div></div><div class="pt-line done"></div>
                     <div class="pt-step done"><div class="pt-dot">✓</div><div class="pt-info"><div class="pt-title">入库称重</div><div class="pt-time">04-12 16:45</div><div class="pt-detail">实际 150.02 kg</div></div></div><div class="pt-line active"></div>
                     <div class="pt-step active"><div class="pt-dot pulse">4</div><div class="pt-info"><div class="pt-title">精炼加工中</div><div class="pt-time">04-13 08:00 开始</div><div class="pt-detail">纯度 98.7% → 目标 99.99%</div></div></div><div class="pt-line"></div>
                     <div class="pt-step"><div class="pt-dot">5</div><div class="pt-info"><div class="pt-title">品质检测</div></div></div><div class="pt-line"></div>
@@ -325,7 +326,7 @@
 <div style="padding:16px">
   <div style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg3);border-radius:var(--r);border-left:3px solid var(--cyan)">
     <span class="status transit">在途</span>
-    <div style="flex:1"><div style="font-size:13px;font-weight:600">GBP-2026-0092</div><div style="font-size:11px;color:var(--txt3)">香港 → 东莞众恒隆 | 布林克安全押运 | 150.00 kg</div></div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:600">GBP-2026-0092</div><div style="font-size:11px;color:var(--txt3)">香港 → 东莞·绍隆实业 | 布林克安全押运 | 150.00 kg</div></div>
     <div style="text-align:right"><div style="font-size:12px;color:var(--green)">预计 14:30 到达</div><div style="font-size:11px;color:var(--txt3)">电子关锁 #EL-20260415-003</div></div>
   </div>
 </div></div>
@@ -339,7 +340,7 @@
 <div class="page-header"><h2>检测认证</h2><div class="breadcrumb">企业服务端 / 检测认证</div></div>
 <div class="two-col">
   <div class="card"><div class="card-header"><h3>加工厂认可状态</h3></div><div style="padding:16px">
-    <div style="font-size:14px;font-weight:600;margin-bottom:12px">众恒隆集团·东莞精炼厂</div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:12px">众恒隆集团·东莞绍隆实业</div>
     <div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>LBMA Good Delivery</span><span style="color:var(--green)">✅ 已认证</span></div><div class="bar-wrap" style="height:6px"><div class="bar-fill green" style="width:100%;height:6px;border-radius:3px"></div></div></div>
     <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>香港黄金交易所认可</span><span style="color:var(--orange)">⏳ 申请中</span></div><div class="bar-wrap" style="height:6px"><div class="bar-fill orange" style="width:55%;height:6px;border-radius:3px"></div></div></div>
   </div></div>
@@ -420,12 +421,12 @@
                         </g>
                         <g class="map-node">
                             <circle cx="250" cy="100" r="8" fill="#fbbf24" opacity="0.2"/><circle cx="250" cy="100" r="5" fill="#fbbf24"/>
-                            <text x="250" y="78" text-anchor="middle" fill="#8896ab" font-size="11" font-family="'Noto Sans SC',sans-serif">东莞·众恒隆</text>
+                            <text x="250" y="78" text-anchor="middle" fill="#8896ab" font-size="11" font-family="'Noto Sans SC',sans-serif">东莞·绍隆实业</text>
                             <text x="250" y="66" text-anchor="middle" fill="#556378" font-size="9">保税精炼加工</text>
                         </g>
                         <g class="map-node">
                             <circle cx="420" cy="80" r="8" fill="#5b8def" opacity="0.2"/><circle cx="420" cy="80" r="5" fill="#5b8def"/>
-                            <text x="420" y="110" text-anchor="middle" fill="#8896ab" font-size="11" font-family="'Noto Sans SC',sans-serif">黄埔海关</text>
+                            <text x="420" y="110" text-anchor="middle" fill="#8896ab" font-size="11" font-family="'Noto Sans SC',sans-serif">凤岗海关</text>
                             <text x="420" y="122" text-anchor="middle" fill="#556378" font-size="9">监管核查</text>
                         </g>
                         <!-- Animated particles along route -->
@@ -461,7 +462,7 @@
             <div class="filter-bar"><button class="filter-tab active">待审批 <span class="count-badge">5</span></button><button class="filter-tab">已审批</button><button class="filter-tab">已退回</button></div>
             <div class="card"><table class="data-table"><thead><tr><th>申请编号</th><th>企业</th><th>类型</th><th>原料量</th><th>提交时间</th><th>紧急</th><th>操作</th></tr></thead><tbody>
                 <tr class="highlight"><td class="mono">GBP-0093</td><td>张氏黄金贸易</td><td><span class="tag blue">来料</span></td><td>250 kg</td><td>04-15 08:30</td><td><span class="urgency high">紧急</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
-                <tr><td class="mono">GBP-0091</td><td>众恒隆国际</td><td><span class="tag purple">进料</span></td><td>200 kg</td><td>04-11 14:20</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
+                <tr><td class="mono">GBP-0091</td><td>香港众恒隆国际</td><td><span class="tag purple">进料</span></td><td>200 kg</td><td>04-11 14:20</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
                 <tr><td class="mono">HT-0046</td><td>Singapore Precious</td><td><span class="tag green">合同</span></td><td>600 kg</td><td>04-10 10:15</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
                 <tr><td class="mono">GBP-0090</td><td>恒丰金业</td><td><span class="tag blue">来料</span></td><td>180 kg</td><td>04-09 16:40</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
                 <tr><td class="mono">SB-0157</td><td>张氏黄金贸易</td><td><span class="tag orange">出境</span></td><td>124.8 kg</td><td>04-08 09:00</td><td><span class="urgency normal">普通</span></td><td><button class="btn sm primary" onclick="showApproval()">审批</button></td></tr>
@@ -473,21 +474,23 @@
 <div class="page-header"><h2>企业管理</h2><div class="breadcrumb">监管服务端 / 企业管理</div></div>
 <div class="kpi-row">
   <div class="kpi-card"><div class="kpi-val">4</div><div class="kpi-label">入驻企业</div></div>
-  <div class="kpi-card"><div class="kpi-val">2</div><div class="kpi-label">活跃委托方</div></div>
-  <div class="kpi-card"><div class="kpi-val">1</div><div class="kpi-label">认证加工厂</div></div>
+  <div class="kpi-card"><div class="kpi-val">2</div><div class="kpi-label">委托方（HK）</div></div>
+  <div class="kpi-card"><div class="kpi-val">3</div><div class="kpi-label">众恒隆集团成员</div></div>
   <div class="kpi-card"><div class="kpi-val">A</div><div class="kpi-label">平均信用等级</div></div>
 </div>
 <div class="card"><div class="card-header"><h3>平台参与方</h3></div>
-<table class="data-table"><thead><tr><th>企业名称</th><th>角色</th><th>资质状态</th><th>信用等级</th><th>累计业务量</th><th>操作</th></tr></thead>
+<table class="data-table"><thead><tr><th>企业名称</th><th>角色</th><th>所属</th><th>资质状态</th><th>信用</th><th>累计业务量</th><th>操作</th></tr></thead>
 <tbody>
-<tr><td>张氏黄金贸易有限公司</td><td><span class="tag blue">委托方</span></td><td><span class="status done">全部合规</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td class="gold">325.00 kg</td><td><a class="link">详情</a></td></tr>
-<tr><td>少龙国际贸易有限公司</td><td><span class="tag blue">委托方</span></td><td><span class="status done">全部合规</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td class="gold">180.00 kg</td><td><a class="link">详情</a></td></tr>
-<tr><td>众恒隆集团·东莞精炼厂</td><td><span class="tag orange">加工方</span></td><td><span class="status warn">待港金认可</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td class="gold">505.00 kg</td><td><a class="link" onclick="showEntDetail()">详情</a></td></tr>
-<tr><td>天地纵横管理咨询</td><td><span class="tag purple">顾问方</span></td><td><span class="status done">已备案</span></td><td>—</td><td>—</td><td><a class="link">详情</a></td></tr>
+<tr><td>张氏黄金贸易有限公司</td><td><span class="tag blue">HK委托方</span></td><td>香港</td><td><span class="status done">全部合规</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td class="gold">325.00 kg</td><td><a class="link">详情</a></td></tr>
+<tr><td>少龙国际贸易有限公司</td><td><span class="tag blue">HK委托方</span></td><td>香港</td><td><span class="status done">全部合规</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td class="gold">180.00 kg</td><td><a class="link">详情</a></td></tr>
+<tr style="border-top:2px solid var(--gold-d);background:rgba(212,168,66,0.04)"><td>深圳众恒隆集团（母公司）</td><td><span class="tag orange">集团母公司</span></td><td>深圳</td><td><span class="status done">已备案</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td>—</td><td><a class="link" onclick="showEntDetail()">详情</a></td></tr>
+<tr><td>　└ 香港众恒隆国际有限公司</td><td><span class="tag orange">HK贸易方</span></td><td>香港</td><td><span class="status done">全部合规</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td class="gold">5.00 kg</td><td><a class="link">详情</a></td></tr>
+<tr><td>　└ 东莞绍隆实业有限公司</td><td><span class="tag orange">加工方</span></td><td>东莞·凤岗</td><td><span class="status warn">待港金认可</span></td><td><span class="urgency high" style="background:var(--green-bg);color:var(--green)">A级</span></td><td class="gold">505.00 kg</td><td><a class="link" onclick="showEntDetail()">详情</a></td></tr>
+<tr><td>天地纵横管理咨询</td><td><span class="tag purple">顾问方</span></td><td>—</td><td><span class="status done">已备案</span></td><td>—</td><td>—</td><td><a class="link">详情</a></td></tr>
 </tbody></table></div>
 <!-- Enterprise detail modal trigger for 众恒隆 -->
 <div class="card" id="entDetail" style="display:none">
-  <div class="card-header"><h3>众恒隆集团 · 资质认可进度</h3><a class="link" onclick="document.getElementById('entDetail').style.display='none'">收起</a></div>
+  <div class="card-header"><h3>众恒隆集团（深圳·香港·东莞绍隆） · 资质认可进度</h3><a class="link" onclick="document.getElementById('entDetail').style.display='none'">收起</a></div>
   <div style="padding:20px">
     <div style="margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>LBMA Good Delivery</span><span class="gold">100%</span></div>
@@ -552,7 +555,7 @@
 <div style="padding:20px">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding:16px;background:var(--bg3);border-radius:var(--r);border-left:3px solid var(--gold)">
     <div><div style="font-size:12px;color:var(--txt2)">进口总量</div><div style="font-size:28px;font-weight:800;color:var(--gold)">800.00 <small style="font-size:14px">kg</small></div></div>
-    <div style="font-size:11px;color:var(--txt3)">委托方：张氏黄金 | 加工方：众恒隆 | 期间：2025-06 ~ 2025-12</div>
+    <div style="font-size:11px;color:var(--txt3)">委托方：张氏黄金 | 加工方：东莞绍隆实业 | 期间：2025-06 ~ 2025-12</div>
   </div>
   <div style="display:grid;gap:12px">
     <div style="display:flex;align-items:center;gap:12px"><span style="min-width:80px;font-size:12px;color:var(--txt2)">出口量</span><div class="bar-wrap" style="flex:1;height:10px"><div class="bar-fill green" style="width:99.13%;height:10px;border-radius:5px"></div></div><span style="min-width:100px;text-align:right;font-size:13px;font-weight:600">793.00 kg <small style="color:var(--green)">99.13%</small></span></div>
@@ -601,23 +604,48 @@
 <div class="card" style="padding:20px;text-align:center;color:var(--txt3);font-size:13px">详细趋势图表请查看 <a class="link" onclick="navigateToPage('g-dashboard')">监管驾驶舱 →</a></div>
 </div>
         <div class="page" id="page-g-exchange">
-<div class="page-header"><h2>双关数据交换</h2><div class="breadcrumb">监管服务端 / 数据交换</div></div>
+<div class="page-header"><h2>三关协同数据交换</h2><div class="breadcrumb">监管服务端 / 三关数据交换</div></div>
+
+<!-- 三关协同状态 -->
 <div class="kpi-row">
-  <div class="kpi-card"><div class="kpi-val">156</div><div class="kpi-label">今日发送</div></div>
-  <div class="kpi-card"><div class="kpi-val">148</div><div class="kpi-label">今日接收</div></div>
-  <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">失败</div></div>
-  <div class="kpi-card"><div class="kpi-val">99.8%</div><div class="kpi-label">系统可用率</div></div>
+  <div class="kpi-card"><div class="kpi-val" style="color:var(--gold)">●在线</div><div class="kpi-label">香港海关</div><div class="kpi-sub">机场科现场监管</div></div>
+  <div class="kpi-card"><div class="kpi-val" style="color:var(--cyan)">●在线</div><div class="kpi-label">深圳海关·莲塘口岸</div><div class="kpi-sub">申报/解锁/查验</div></div>
+  <div class="kpi-card"><div class="kpi-val" style="color:var(--blue)">●在线</div><div class="kpi-label">黄埔海关·凤岗</div><div class="kpi-sub">辖区加工监管</div></div>
+  <div class="kpi-card"><div class="kpi-val">99.8%</div><div class="kpi-label">三关协同可用率</div></div>
 </div>
-<div class="card"><div class="card-header"><h3>系统对接状态</h3></div>
+
+<div class="card"><div class="card-header"><h3>对接系统状态</h3></div>
 <table class="data-table"><thead><tr><th>对接系统</th><th>接口方式</th><th>状态</th><th>延迟</th><th>最近同步</th></tr></thead><tbody>
 <tr><td>中国国际贸易单一窗口</td><td>REST API</td><td><span class="status done">在线</span></td><td>120ms</td><td>2分钟前</td></tr>
 <tr><td>金关二期加工贸易系统</td><td>专线</td><td><span class="status done">在线</span></td><td>85ms</td><td>1分钟前</td></tr>
 <tr><td>中国电子口岸</td><td>IC卡+API</td><td><span class="status done">在线</span></td><td>95ms</td><td>5分钟前</td></tr>
-<tr><td>香港海关TDEC</td><td>跨境专线</td><td><span class="status done">在线</span></td><td>210ms</td><td>3分钟前</td></tr>
-<tr><td>黄埔海关内网</td><td>内网直连</td><td><span class="status done">在线</span></td><td>15ms</td><td>实时</td></tr>
-<tr><td>众恒隆IoT传感器</td><td>MQTT</td><td><span class="status done">在线</span></td><td>50ms</td><td>实时(12台设备)</td></tr>
+<tr><td>香港海关 TDEC</td><td>跨境专线</td><td><span class="status done">在线</span></td><td>210ms</td><td>3分钟前</td></tr>
+<tr style="background:rgba(34,211,238,0.04)"><td>深圳海关·莲塘口岸</td><td>跨关区专线</td><td><span class="status done">在线</span></td><td>22ms</td><td>实时</td></tr>
+<tr style="background:rgba(91,141,239,0.04)"><td>黄埔海关·凤岗内网</td><td>内网直连</td><td><span class="status done">在线</span></td><td>15ms</td><td>实时</td></tr>
+<tr><td>绍隆IoT传感器</td><td>MQTT</td><td><span class="status done">在线</span></td><td>50ms</td><td>实时(12台设备)</td></tr>
 <tr><td>银行结算系统</td><td>API</td><td><span class="status done">在线</span></td><td>180ms</td><td>10分钟前</td></tr>
 </tbody></table></div>
+
+<!-- 三关协同业务 -->
+<div class="card"><div class="card-header"><h3>三关协同业务流转（实时）</h3><span class="live-badge">LIVE</span></div>
+<div style="padding:16px;font-size:12px;color:var(--txt2);line-height:1.8">
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
+    <span class="tag green" style="font-size:10px">①检测监管</span>
+    <span style="color:var(--gold)">香港海关</span> <span style="color:var(--txt3)">→</span>
+    <span>张氏黄金HK场地火试金检测，香港海关现场+视频监管，加施电子锁</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
+    <span class="tag blue" style="font-size:10px">②口岸通关</span>
+    <span style="color:var(--cyan)">深圳海关·莲塘</span> <span style="color:var(--txt3)">→</span>
+    <span>东莞绍隆办理进口申报，海关验放后解锁；查验时需现场配合解锁</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 0">
+    <span class="tag orange" style="font-size:10px">③加工监管</span>
+    <span style="color:var(--blue)">黄埔海关·凤岗</span> <span style="color:var(--txt3)">→</span>
+    <span>辖区监管下精炼提纯加工，料号级底账实时核注，提纯后复出口</span>
+  </div>
+</div>
+</div>
 </div>
 <!-- Full Chain Tracking - Business side -->
 <div class="page" id="page-b-tracking">
@@ -630,7 +658,7 @@
       <option value="GBP-0091">GBP-2026-0091 · 少龙 · 200kg · 在途</option>
       <option value="GBP-0089">GBP-2026-0089 · 张氏黄金 · 125.5kg · 检测中</option>
     </select>
-    <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><span class="status processing">加工中</span><span style="font-size:12px;color:var(--txt2)">委托方：张氏黄金 | 加工方：众恒隆 | 150.00 kg</span></div>
+    <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><span class="status processing">加工中</span><span style="font-size:12px;color:var(--txt2)">委托方：张氏黄金 | 加工方：东莞绍隆实业 | 150.00 kg</span></div>
   </div>
 
   <!-- Visual Route Map -->
@@ -655,22 +683,24 @@
           <text x="60" y="126" text-anchor="middle" fill="#d4a842" font-size="11" font-weight="600" font-family="'Noto Sans SC'">香港仓库</text>
           <text x="60" y="80" text-anchor="middle" fill="#34d399" font-size="9">✓ 已发运</text></g>
 
-        <!-- Node 2: Shenzhen Bay / Border -->
+        <!-- Node 2: 莲塘口岸（深圳海关） -->
         <g><circle cx="210" cy="60" r="10" fill="rgba(34,211,238,0.15)" stroke="#22d3ee" stroke-width="1.5"/>
           <circle cx="210" cy="60" r="4" fill="#22d3ee" filter="url(#glow2)"/>
-          <text x="210" y="86" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="600" font-family="'Noto Sans SC'">深圳湾口岸</text>
-          <text x="210" y="44" text-anchor="middle" fill="#34d399" font-size="9">✓ 已通关</text></g>
+          <text x="210" y="86" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="600" font-family="'Noto Sans SC'">莲塘口岸</text>
+          <text x="210" y="98" text-anchor="middle" fill="#8896ab" font-size="8" font-family="'Noto Sans SC'">深圳海关</text>
+          <text x="210" y="44" text-anchor="middle" fill="#34d399" font-size="9">✓ 已解锁验放</text></g>
 
-        <!-- Node 3: Huangpu Customs -->
+        <!-- Node 3: 凤岗海关（黄埔下属） -->
         <g><circle cx="380" cy="40" r="10" fill="rgba(91,141,239,0.15)" stroke="#5b8def" stroke-width="1.5"/>
           <circle cx="380" cy="40" r="4" fill="#5b8def" filter="url(#glow2)"/>
-          <text x="380" y="24" text-anchor="middle" fill="#5b8def" font-size="10" font-weight="600" font-family="'Noto Sans SC'">黄埔海关</text>
+          <text x="380" y="24" text-anchor="middle" fill="#5b8def" font-size="10" font-weight="600" font-family="'Noto Sans SC'">凤岗海关</text>
+          <text x="380" y="14" text-anchor="middle" fill="#8896ab" font-size="8" font-family="'Noto Sans SC'">黄埔下属</text>
           <text x="380" y="62" text-anchor="middle" fill="#34d399" font-size="9">✓ 已核放</text></g>
 
         <!-- Node 4: Factory (ACTIVE) -->
         <g class="map-node"><circle cx="540" cy="90" r="14" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2"/>
           <circle cx="540" cy="90" r="6" fill="#fbbf24" filter="url(#glow2)"/>
-          <text x="540" y="76" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700" font-family="'Noto Sans SC'">众恒隆炼厂</text>
+          <text x="540" y="76" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700" font-family="'Noto Sans SC'">绍隆精炼厂</text>
           <text x="540" y="118" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">● 加工中</text></g>
 
         <!-- Node 5: Export (future) -->
@@ -703,15 +733,15 @@
         <div class="track-line done"></div>
         <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">香港仓库提货</div><div class="track-time">04-12 10:15 香港</div><div class="track-detail">布林克押运提货，RFID封签 #RF-2026-0451</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 提货视频</span></div></div></div>
         <div class="track-line done"></div>
-        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">跨境运输中</div><div class="track-time">04-12 11:00 → 12:30</div><div class="track-detail">车辆：粤B·T8826 | 司机：陈志强<br>路线：香港→深圳湾→广深高速→东莞</div><div class="track-tag"><span class="tag blue" style="font-size:9px">📹 车载视频</span> <span class="tag purple" style="font-size:9px">🔒 关锁正常</span></div></div></div>
+        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">跨境运输中</div><div class="track-time">04-12 11:00 → 12:30</div><div class="track-detail">车辆：粤B·T8826 | 司机：陈志强<br>路线：香港→莲塘口岸→凤岗→东莞绍隆</div><div class="track-tag"><span class="tag blue" style="font-size:9px">📹 车载视频</span> <span class="tag purple" style="font-size:9px">🔒 关锁正常</span></div></div></div>
         <div class="track-line done"></div>
-        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">深圳湾口岸通关</div><div class="track-time">04-12 11:40</div><div class="track-detail">RFID卡口自动识读 | 海关自动核放</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 卡口视频</span></div></div></div>
+        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">莲塘口岸通关</div><div class="track-time">04-12 11:40</div><div class="track-detail">RFID卡口自动识读 | 海关自动核放</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 卡口视频</span></div></div></div>
         <div class="track-line done"></div>
-        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">黄埔海关核放</div><div class="track-time">04-12 14:20</div><div class="track-detail">核注清单 BHZ-2026-0451 已核放</div></div></div>
+        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">凤岗海关核放</div><div class="track-time">04-12 14:20</div><div class="track-detail">核注清单 BHZ-2026-0451 已核放</div></div></div>
         <div class="track-line done"></div>
         <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">入厂称重入库</div><div class="track-time">04-12 16:45 东莞</div><div class="track-detail">实际入库 150.02 kg | A区-03号库位<br>RFID标签 #RF-2026-0451 验证通过</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 入库视频</span> <span class="tag blue" style="font-size:9px">⚖️ 称重记录</span></div></div></div>
         <div class="track-line active"></div>
-        <div class="track-node active"><div class="track-dot active pulse">7</div><div class="track-info"><div class="track-title" style="color:var(--gold)">精炼加工中</div><div class="track-time">04-13 08:00 开始 东莞众恒隆</div><div class="track-detail">工序：熔炼→精炼→浇铸<br>当前纯度 98.7% → 目标 99.99%<br>预计完成：04-15 18:00</div><div class="track-tag"><span class="tag orange" style="font-size:9px">📹 车间监控</span> <span class="tag blue" style="font-size:9px">🌡️ IoT数据</span></div></div></div>
+        <div class="track-node active"><div class="track-dot active pulse">7</div><div class="track-info"><div class="track-title" style="color:var(--gold)">精炼加工中</div><div class="track-time">04-13 08:00 开始 东莞·绍隆实业</div><div class="track-detail">工序：熔炼→精炼→浇铸<br>当前纯度 98.7% → 目标 99.99%<br>预计完成：04-15 18:00</div><div class="track-tag"><span class="tag orange" style="font-size:9px">📹 车间监控</span> <span class="tag blue" style="font-size:9px">🌡️ IoT数据</span></div></div></div>
         <div class="track-line"></div>
         <div class="track-node"><div class="track-dot">8</div><div class="track-info"><div class="track-title">品质检测</div><div class="track-time">待执行</div></div></div>
         <div class="track-line"></div>
@@ -725,7 +755,7 @@
     <div style="display:flex;flex-direction:column;gap:14px">
 
       <!-- IoT Real-time Data -->
-      <div class="card"><div class="card-header"><h3>IoT 实时数据 · 众恒隆精炼车间</h3><span class="live-badge">LIVE</span></div>
+      <div class="card"><div class="card-header"><h3>IoT 实时数据 · 绍隆精炼车间</h3><span class="live-badge">LIVE</span></div>
         <div class="iot-grid" style="padding:16px;margin:0">
           <div class="iot-card"><div class="iot-title">🌡️ 炉温</div><div class="iot-value">1,064 <small>°C</small></div><div class="iot-status normal">正常 1000-1100°C</div></div>
           <div class="iot-card"><div class="iot-title">⚖️ 当前重量</div><div class="iot-value">149.35 <small>kg</small></div><div class="iot-status normal">损耗 0.45%</div></div>
@@ -778,7 +808,7 @@
       <option value="GBP-0091">GBP-2026-0091 · 少龙 · 200kg · 在途</option>
       <option value="GBP-0089">GBP-2026-0089 · 张氏黄金 · 125.5kg · 检测中</option>
     </select>
-    <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><span class="status processing">加工中</span><span style="font-size:12px;color:var(--txt2)">委托方：张氏黄金 | 加工方：众恒隆 | 150.00 kg</span></div>
+    <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><span class="status processing">加工中</span><span style="font-size:12px;color:var(--txt2)">委托方：张氏黄金 | 加工方：东莞绍隆实业 | 150.00 kg</span></div>
   </div>
 
   <!-- Visual Route Map -->
@@ -806,19 +836,19 @@
         <!-- Node 2: Shenzhen Bay / Border -->
         <g><circle cx="210" cy="60" r="10" fill="rgba(34,211,238,0.15)" stroke="#22d3ee" stroke-width="1.5"/>
           <circle cx="210" cy="60" r="4" fill="#22d3ee" filter="url(#glow2g)"/>
-          <text x="210" y="86" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="600" font-family="'Noto Sans SC'">深圳湾口岸</text>
+          <text x="210" y="86" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="600" font-family="'Noto Sans SC'">莲塘口岸</text>
           <text x="210" y="44" text-anchor="middle" fill="#34d399" font-size="9">✓ 已通关</text></g>
 
         <!-- Node 3: Huangpu Customs -->
         <g><circle cx="380" cy="40" r="10" fill="rgba(91,141,239,0.15)" stroke="#5b8def" stroke-width="1.5"/>
           <circle cx="380" cy="40" r="4" fill="#5b8def" filter="url(#glow2g)"/>
-          <text x="380" y="24" text-anchor="middle" fill="#5b8def" font-size="10" font-weight="600" font-family="'Noto Sans SC'">黄埔海关</text>
+          <text x="380" y="24" text-anchor="middle" fill="#5b8def" font-size="10" font-weight="600" font-family="'Noto Sans SC'">凤岗海关</text>
           <text x="380" y="62" text-anchor="middle" fill="#34d399" font-size="9">✓ 已核放</text></g>
 
         <!-- Node 4: Factory (ACTIVE) -->
         <g class="map-node"><circle cx="540" cy="90" r="14" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2"/>
           <circle cx="540" cy="90" r="6" fill="#fbbf24" filter="url(#glow2g)"/>
-          <text x="540" y="76" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700" font-family="'Noto Sans SC'">众恒隆炼厂</text>
+          <text x="540" y="76" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700" font-family="'Noto Sans SC'">绍隆精炼厂</text>
           <text x="540" y="118" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">● 加工中</text></g>
 
         <!-- Node 5: Export (future) -->
@@ -851,15 +881,15 @@
         <div class="track-line done"></div>
         <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">香港仓库提货</div><div class="track-time">04-12 10:15 香港</div><div class="track-detail">布林克押运提货，RFID封签 #RF-2026-0451</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 提货视频</span></div></div></div>
         <div class="track-line done"></div>
-        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">跨境运输中</div><div class="track-time">04-12 11:00 → 12:30</div><div class="track-detail">车辆：粤B·T8826 | 司机：陈志强<br>路线：香港→深圳湾→广深高速→东莞</div><div class="track-tag"><span class="tag blue" style="font-size:9px">📹 车载视频</span> <span class="tag purple" style="font-size:9px">🔒 关锁正常</span></div></div></div>
+        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">跨境运输中</div><div class="track-time">04-12 11:00 → 12:30</div><div class="track-detail">车辆：粤B·T8826 | 司机：陈志强<br>路线：香港→莲塘口岸→凤岗→东莞绍隆</div><div class="track-tag"><span class="tag blue" style="font-size:9px">📹 车载视频</span> <span class="tag purple" style="font-size:9px">🔒 关锁正常</span></div></div></div>
         <div class="track-line done"></div>
-        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">深圳湾口岸通关</div><div class="track-time">04-12 11:40</div><div class="track-detail">RFID卡口自动识读 | 海关自动核放</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 卡口视频</span></div></div></div>
+        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">莲塘口岸通关</div><div class="track-time">04-12 11:40</div><div class="track-detail">RFID卡口自动识读 | 海关自动核放</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 卡口视频</span></div></div></div>
         <div class="track-line done"></div>
-        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">黄埔海关核放</div><div class="track-time">04-12 14:20</div><div class="track-detail">核注清单 BHZ-2026-0451 已核放</div></div></div>
+        <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">凤岗海关核放</div><div class="track-time">04-12 14:20</div><div class="track-detail">核注清单 BHZ-2026-0451 已核放</div></div></div>
         <div class="track-line done"></div>
         <div class="track-node done"><div class="track-dot done">✓</div><div class="track-info"><div class="track-title">入厂称重入库</div><div class="track-time">04-12 16:45 东莞</div><div class="track-detail">实际入库 150.02 kg | A区-03号库位<br>RFID标签 #RF-2026-0451 验证通过</div><div class="track-tag"><span class="tag green" style="font-size:9px">📹 入库视频</span> <span class="tag blue" style="font-size:9px">⚖️ 称重记录</span></div></div></div>
         <div class="track-line active"></div>
-        <div class="track-node active"><div class="track-dot active pulse">7</div><div class="track-info"><div class="track-title" style="color:var(--gold)">精炼加工中</div><div class="track-time">04-13 08:00 开始 东莞众恒隆</div><div class="track-detail">工序：熔炼→精炼→浇铸<br>当前纯度 98.7% → 目标 99.99%<br>预计完成：04-15 18:00</div><div class="track-tag"><span class="tag orange" style="font-size:9px">📹 车间监控</span> <span class="tag blue" style="font-size:9px">🌡️ IoT数据</span></div></div></div>
+        <div class="track-node active"><div class="track-dot active pulse">7</div><div class="track-info"><div class="track-title" style="color:var(--gold)">精炼加工中</div><div class="track-time">04-13 08:00 开始 东莞·绍隆实业</div><div class="track-detail">工序：熔炼→精炼→浇铸<br>当前纯度 98.7% → 目标 99.99%<br>预计完成：04-15 18:00</div><div class="track-tag"><span class="tag orange" style="font-size:9px">📹 车间监控</span> <span class="tag blue" style="font-size:9px">🌡️ IoT数据</span></div></div></div>
         <div class="track-line"></div>
         <div class="track-node"><div class="track-dot">8</div><div class="track-info"><div class="track-title">品质检测</div><div class="track-time">待执行</div></div></div>
         <div class="track-line"></div>
@@ -873,7 +903,7 @@
     <div style="display:flex;flex-direction:column;gap:14px">
 
       <!-- IoT Real-time Data -->
-      <div class="card"><div class="card-header"><h3>IoT 实时数据 · 众恒隆精炼车间</h3><span class="live-badge">LIVE</span></div>
+      <div class="card"><div class="card-header"><h3>IoT 实时数据 · 绍隆精炼车间</h3><span class="live-badge">LIVE</span></div>
         <div class="iot-grid" style="padding:16px;margin:0">
           <div class="iot-card"><div class="iot-title">🌡️ 炉温</div><div class="iot-value">1,064 <small>°C</small></div><div class="iot-status normal">正常 1000-1100°C</div></div>
           <div class="iot-card"><div class="iot-title">⚖️ 当前重量</div><div class="iot-value">149.35 <small>kg</small></div><div class="iot-status normal">损耗 0.45%</div></div>
@@ -929,7 +959,7 @@
                 <div class="ai-row"><span class="ai-label">委托方</span><span>Hong Kong Gold Trading Co.</span></div>
                 <div class="ai-row"><span class="ai-label">原料量</span><span class="gold">250.00 kg</span></div>
                 <div class="ai-row"><span class="ai-label">纯度</span><span>95.5% → 99.99%</span></div>
-                <div class="ai-row"><span class="ai-label">工厂</span><span>众恒隆·东莞精炼厂</span></div>
+                <div class="ai-row"><span class="ai-label">工厂</span><span>众恒隆集团·东莞绍隆实业</span></div>
                 <div class="ai-row"><span class="ai-label">关联合同</span><span class="mono">HT-2026-0045</span></div>
             </div>
             <div class="approval-check"><h4>合规检查</h4>
