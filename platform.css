@@ -1178,3 +1178,78 @@ tr.highlight{background:rgba(212,168,66,0.04)!important}
   .iot-grid{grid-template-columns:1fr}
   .topbar-gold-price{display:none}
 }
+
+/* ================================================================
+   35. LOGIN SCREEN (v6.0)
+   ================================================================ */
+.login-screen{position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#060a14,#0c1122);display:flex;align-items:center;justify-content:center;overflow-y:auto;padding:24px}
+.login-screen.hidden{display:none}
+#loginParticles{position:absolute;inset:0;z-index:0;opacity:0.5}
+.login-card{position:relative;z-index:2;background:linear-gradient(160deg,rgba(15,22,40,0.95),rgba(20,30,55,0.95));border:1px solid rgba(212,168,66,0.2);border-radius:16px;padding:36px 32px;max-width:520px;width:100%;backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 40px rgba(212,168,66,0.08)}
+.login-logo{text-align:center;margin-bottom:14px;filter:drop-shadow(0 0 12px rgba(212,168,66,0.4))}
+.login-brand{text-align:center;font-size:24px;font-weight:800;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;margin-bottom:6px}
+.login-sub{text-align:center;font-size:11px;color:var(--txt3);letter-spacing:2px;margin-bottom:24px}
+.login-form{margin-bottom:18px}
+.login-field{margin-bottom:14px}
+.login-field label{display:block;font-size:11px;color:var(--txt3);margin-bottom:5px;letter-spacing:1px}
+.login-field input{width:100%;background:rgba(6,10,20,0.6);border:1px solid var(--border);color:var(--txt);padding:12px 14px;border-radius:8px;font-size:13px;font-family:inherit;transition:all .2s}
+.login-field input:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(212,168,66,0.1)}
+.login-options{display:flex;justify-content:space-between;font-size:11px;color:var(--txt2);margin-bottom:12px}
+.login-options input{accent-color:var(--gold)}
+.login-error{font-size:11px;color:var(--red);min-height:14px;margin-bottom:8px}
+.login-btn{width:100%;background:var(--gold-grad);color:#1a1400;border:none;padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:6px;transition:all .2s}
+.login-btn:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(212,168,66,0.3)}
+.login-quick{margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}
+.login-quick-title{font-size:10px;color:var(--txt3);text-align:center;margin-bottom:10px;letter-spacing:1px}
+.login-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.login-quick-btn{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.02);border:1px solid var(--border);color:var(--txt2);padding:8px 10px;border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit;text-align:left;transition:all .2s}
+.login-quick-btn:hover{border-color:var(--gold);background:rgba(212,168,66,0.05);color:var(--txt)}
+.login-quick-btn b{font-size:11px;font-weight:600;color:var(--txt)}
+.login-quick-btn small{font-size:9px;color:var(--txt3)}
+.lqb-avatar{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.login-skip{text-align:center;margin-top:14px}
+.login-skip a{font-size:10px;color:var(--txt3);cursor:pointer;text-decoration:underline}
+.login-skip a:hover{color:var(--gold)}
+.login-footer{text-align:center;font-size:9px;color:var(--txt3);margin-top:20px;padding-top:14px;border-top:1px solid var(--border)}
+@media(max-width:600px){
+  .login-quick-grid{grid-template-columns:1fr}
+  .login-card{padding:24px 20px}
+}
+
+/* ================================================================
+   36. v6.0 TOPBAR ENHANCEMENTS (notification, audit, user menu)
+   ================================================================ */
+.topbar-icon{position:relative;background:transparent;border:1px solid var(--border);color:var(--txt2);width:32px;height:32px;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.topbar-icon:hover{border-color:var(--gold);color:var(--gold)}
+.topbar-badge{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:8px;background:var(--red);color:#fff;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--bg)}
+.user-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:linear-gradient(160deg,var(--bg-card),var(--bg3));border:1px solid var(--border2);border-radius:10px;min-width:160px;box-shadow:0 12px 40px rgba(0,0,0,0.5);z-index:1000;overflow:hidden;animation:fadeUp .2s ease}
+.user-dropdown.hidden{display:none}
+.ud-item{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:12px;color:var(--txt2);cursor:pointer;transition:all .2s}
+.ud-item:hover{background:rgba(255,255,255,0.04);color:var(--txt)}
+.ud-item.danger{color:var(--red)}
+.ud-item.danger:hover{background:var(--red-bg)}
+.ud-divider{height:1px;background:var(--border);margin:2px 0}
+
+/* 审计日志页 */
+.audit-row{display:grid;grid-template-columns:140px 80px 100px 100px 1fr 90px;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);font-size:11px;align-items:center}
+.audit-row:hover{background:rgba(255,255,255,0.02)}
+.audit-time{color:var(--txt3);font-family:monospace;font-size:10px}
+.audit-type{padding:2px 8px;border-radius:4px;font-weight:600;font-size:10px;text-align:center}
+.audit-type.login{background:var(--green-bg);color:var(--green)}
+.audit-type.logout{background:rgba(255,255,255,0.05);color:var(--txt3)}
+.audit-type.submit{background:var(--blue-bg);color:var(--blue)}
+.audit-type.approve{background:var(--gold-glow);color:var(--gold)}
+.audit-type.reject{background:var(--red-bg);color:var(--red)}
+.audit-type.verify{background:var(--purple-bg);color:var(--purple)}
+.audit-ip{font-family:monospace;color:var(--txt3);font-size:10px}
+
+/* 通知页 */
+.notif-item{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);transition:all .2s;cursor:pointer}
+.notif-item:hover{background:rgba(255,255,255,0.02)}
+.notif-item.unread{background:rgba(212,168,66,0.04);border-left:3px solid var(--gold)}
+.notif-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:var(--bg3)}
+.notif-content{flex:1;min-width:0}
+.notif-title{font-size:13px;font-weight:600;margin-bottom:3px}
+.notif-text{font-size:11px;color:var(--txt2);line-height:1.5}
+.notif-time{font-size:10px;color:var(--txt3);margin-top:4px}
+.notif-empty{text-align:center;padding:60px 20px;color:var(--txt3);font-size:13px}

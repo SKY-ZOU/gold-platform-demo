@@ -11,6 +11,56 @@
 </head>
 <body>
 
+<!-- ==================== 登录界面 ==================== -->
+<div id="loginScreen" class="login-screen hidden">
+  <canvas id="loginParticles"></canvas>
+  <div class="login-card">
+    <div class="login-logo">
+      <svg viewBox="0 0 40 40" width="48" height="48"><polygon points="20,2 26,14 38,16 29,25 31,38 20,32 9,38 11,25 2,16 14,14" fill="url(#gd)" stroke="#B8860B" stroke-width="0.5"/></svg>
+    </div>
+    <div class="login-brand">GoldPass <span style="font-size:14px;opacity:0.7">金 通</span></div>
+    <div class="login-sub">大湾区国际黄金综合服务中心 · 统一登录</div>
+
+    <form class="login-form" onsubmit="return doLogin(event)">
+      <div class="login-field">
+        <label>账号</label>
+        <input type="text" id="loginEmail" placeholder="账号" autocomplete="username" required>
+      </div>
+      <div class="login-field">
+        <label>密码</label>
+        <input type="password" id="loginPwd" placeholder="密码" value="demo123" autocomplete="current-password" required>
+      </div>
+      <div class="login-options">
+        <label><input type="checkbox" id="loginRemember" checked> 记住登录</label>
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <button type="submit" class="login-btn">登 录</button>
+    </form>
+
+    <div class="login-quick">
+      <div class="login-quick-title">快速登录（演示账号 · 密码均为 demo123）</div>
+      <div class="login-quick-grid">
+        <button class="login-quick-btn" onclick="quickLogin('zhang@chang.hk')"><span class="lqb-avatar" style="background:#d4a842;color:#1a1400">张</span><span><b>张氏黄金</b><br><small>HK委托方</small></span></button>
+        <button class="login-quick-btn" onclick="quickLogin('shaolong@hk.com')"><span class="lqb-avatar" style="background:#d4a842;color:#1a1400">少</span><span><b>少龙国际</b><br><small>HK委托方</small></span></button>
+        <button class="login-quick-btn" onclick="quickLogin('zhonghenglong@hk.com')"><span class="lqb-avatar" style="background:#fbbf24;color:#1a1400">众</span><span><b>香港众恒隆</b><br><small>HK贸易方</small></span></button>
+        <button class="login-quick-btn" onclick="quickLogin('shaolong@dg.cn')"><span class="lqb-avatar" style="background:#fbbf24;color:#1a1400">绍</span><span><b>东莞绍隆</b><br><small>加工方</small></span></button>
+        <button class="login-quick-btn" onclick="quickLogin('customs.hk@gov.hk')"><span class="lqb-avatar" style="background:#d4a842;color:#1a1400">港</span><span><b>香港海关</b><br><small>机场科</small></span></button>
+        <button class="login-quick-btn" onclick="quickLogin('customs.sz@gov.cn')"><span class="lqb-avatar" style="background:#22d3ee;color:#001a20">深</span><span><b>深圳海关</b><br><small>莲塘口岸</small></span></button>
+        <button class="login-quick-btn" onclick="quickLogin('customs.hp@gov.cn')"><span class="lqb-avatar" style="background:#5b8def;color:#fff">凤</span><span><b>黄埔海关</b><br><small>凤岗下属</small></span></button>
+        <button class="login-quick-btn" onclick="quickLogin('admin@goldpass.io')"><span class="lqb-avatar" style="background:linear-gradient(135deg,#d4a842,#fbbf24);color:#1a1400">⭐</span><span><b>平台管理员</b><br><small>一带一路集团</small></span></button>
+      </div>
+    </div>
+
+    <div class="login-skip">
+      <a onclick="skipLogin()">→ 跳过登录直接进入演示模式（无数据持久化）</a>
+    </div>
+
+    <div class="login-footer">
+      一带一路国际黄金集团 · GoldPass v6.0
+    </div>
+  </div>
+</div>
+
 <!-- ==================== 金通指挥中心大屏入口 ==================== -->
 <div id="roleSelect" class="cmd-screen">
   <canvas id="particleCanvas"></canvas>
@@ -194,8 +244,25 @@
         </div>
         <div class="topbar-right">
             <div class="topbar-gold-price"><span class="price-label">LBMA</span><span class="price-value">$2,347.80</span><span class="price-change up">+0.42%</span></div>
-            <button class="topbar-switch" onclick="showRoleSelect()">切换端口</button>
-            <div class="topbar-user"><div class="user-avatar" id="userAvatar">张</div><span id="userName">张德熙</span></div>
+            <button class="topbar-icon" onclick="navigateToPage(currentPortal==='gov'?'g-notif':'b-notif')" title="消息通知">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2a5 5 0 00-5 5v3l-2 3h14l-2-3V7a5 5 0 00-5-5z"/><path d="M8 16a2 2 0 004 0"/></svg>
+              <span class="topbar-badge" id="notifBadge" style="display:none">0</span>
+            </button>
+            <button class="topbar-icon" onclick="navigateToPage(currentPortal==='gov'?'g-audit':'b-audit')" title="操作日志">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 8h6M7 11h6M7 14h4"/></svg>
+            </button>
+            <div class="topbar-user" onclick="toggleUserMenu()" style="cursor:pointer;position:relative">
+              <div class="user-avatar" id="userAvatar">张</div>
+              <span id="userName">张德熙</span>
+              <svg viewBox="0 0 20 20" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:2px"><path d="M5 8l5 5 5-5"/></svg>
+              <!-- 下拉菜单 -->
+              <div class="user-dropdown hidden" id="userDropdown">
+                <div class="ud-item" onclick="event.stopPropagation();showRoleSelect()"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10h14M10 3v14"/></svg> 返回首页</div>
+                <div class="ud-item" onclick="event.stopPropagation();switchPortalView()"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h12l-3-3M16 13H4l3 3"/></svg> 切换端口</div>
+                <div class="ud-divider"></div>
+                <div class="ud-item danger" onclick="event.stopPropagation();doLogout()"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 5V3a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1h8a1 1 0 001-1v-2M9 10h11l-3-3M20 10l-3 3"/></svg> 退出登录</div>
+              </div>
+            </div>
         </div>
     </header>
 
