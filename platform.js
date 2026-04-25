@@ -567,3 +567,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize',()=>mc.resize());
   }
 });
+
+// ========== 通关模式切换 ==========
+function switchCustomsMode(mode) {
+  document.getElementById('cm-tab-elec').classList.toggle('active', mode === 'elec');
+  document.getElementById('cm-tab-cross').classList.toggle('active', mode === 'cross');
+  document.getElementById('cm-content-elec').classList.toggle('hidden', mode !== 'elec');
+  document.getElementById('cm-content-cross').classList.toggle('hidden', mode !== 'cross');
+  document.getElementById('mainContent').scrollTop = 0;
+}
